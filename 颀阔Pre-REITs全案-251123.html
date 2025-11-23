@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>尚颀颀阔 Pre-REITs 业务介绍材料 | 颀阔智能</title>
+    <style>
+        :root {
+            --primary-color: #1e2a78; /* 品牌深蓝 */
+            --accent-color: #8b5cf6; /* 品牌亮紫 */
+            --gradient-primary: linear-gradient(135deg, #1e2a78 0%, #8b5cf6 100%);
+            --bg-color: #ffffff;
+            --bg-alt: #f9fafb;
+            --text-main: #1f2937;
+            --text-light: #4b5563;
+            --border-color: #e5e7eb;
+            --card-shadow: 0 15px 35px -5px rgba(30, 42, 120, 0.08);
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-family); color: var(--text-main); line-height: 1.7; background-color: var(--bg-color); overflow-x: hidden; }
+
+        /* --- Header & Logo --- */
+        header { position: fixed; top: 0; left: 0; width: 100%; padding: 15px 40px; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); display: flex; align-items: center; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+        .logo-container { display: flex; align-items: center; gap: 14px; }
+        .logo-svg { height: 42px; width: auto; }
+        .logo-text { font-size: 22px; font-weight: 800; color: var(--primary-color); letter-spacing: 0.5px; line-height: 1; }
+        .logo-text span { display: block; font-size: 10px; color: var(--text-main); letter-spacing: 2.5px; text-transform: uppercase; margin-top: 4px; opacity: 0.7; }
+
+        /* --- Hero Section --- */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 10% 60px; background: var(--bg-alt); position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 80%; height: 200%; background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%); z-index: 0; }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 30px; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero h2 { font-size: 1.5rem; font-weight: 500; color: var(--text-light); margin-bottom: 60px; }
+        .hero-meta { font-size: 1rem; color: var(--text-light); border-top: 1px solid #ddd; padding-top: 20px; display: inline-block; }
+
+        /* --- Layout Components --- */
+        section { padding: 100px 10%; border-bottom: 1px solid var(--border-color); }
+        section:nth-child(even) { background-color: #fafafa; }
+        .section-header { margin-bottom: 80px; }
+        .section-number { font-size: 5rem; font-weight: 900; color: rgba(30, 42, 120, 0.05); line-height: 0.8; margin-bottom: -20px; display: block; }
+        .section-title { font-size: 2.5rem; font-weight: 700; color: var(--text-main); position: relative; }
+        
+        .slide-block { margin-bottom: 80px; }
+        .slide-title { font-size: 1.6rem; font-weight: 600; margin-bottom: 30px; color: var(--primary-color); display: flex; align-items: center; }
+        .slide-title::before { content: ''; display: inline-block; width: 6px; height: 24px; background: var(--accent-color); margin-right: 15px; border-radius: 2px; }
+
+        /* --- Cards & Grids --- */
+        .card { background: white; padding: 35px; border-radius: 20px; box-shadow: var(--card-shadow); border: 1px solid rgba(0,0,0,0.04); height: 100%; transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { font-size: 1.2rem; margin-bottom: 15px; color: var(--primary-color); font-weight: 700; }
+        .card p, .card li { font-size: 0.95rem; color: var(--text-light); margin-bottom: 12px; text-align: justify; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+        /* --- Tables --- */
+        .table-responsive { overflow-x: auto; border-radius: 12px; box-shadow: var(--card-shadow); background: white; margin: 20px 0; }
+        table { width: 100%; border-collapse: collapse; min-width: 800px; }
+        th { background: #f3f4f6; color: var(--primary-color); font-weight: 700; padding: 18px; text-align: left; border-bottom: 2px solid var(--border-color); white-space: nowrap; }
+        td { padding: 18px; border-bottom: 1px solid var(--border-color); font-size: 0.9rem; vertical-align: top; }
+        tr:last-child td { border-bottom: none; }
+
+        /* --- Highlights & Timeline --- */
+        .highlight { background: linear-gradient(to right, rgba(30, 42, 120, 0.03), rgba(139, 92, 246, 0.03)); border-left: 4px solid var(--primary-color); padding: 25px; border-radius: 0 12px 12px 0; margin: 20px 0; }
+        .timeline { position: relative; padding-left: 30px; margin-top: 20px; }
+        .timeline-item { position: relative; padding-bottom: 30px; }
+        .timeline-item::before { content: ''; position: absolute; left: -36px; top: 5px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg-color); border: 3px solid var(--accent-color); z-index: 2; }
+        .timeline-item::after { content: ''; position: absolute; left: -30px; top: 5px; bottom: -30px; width: 2px; background: var(--border-color); z-index: 1; }
+        .timeline-item:last-child::after { display: none; }
+
+        /* --- New Styles for Optimization --- */
+        
+        /* 1.5 Policy Cards */
+        .policy-list { display: flex; flex-direction: column; gap: 20px; }
+        .policy-item { background: white; padding: 25px; border-radius: 12px; border-left: 5px solid var(--primary-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+        .policy-title { font-size: 1.1rem; font-weight: 700; color: var(--primary-color); margin-bottom: 10px; display: block; }
+        .asset-tag { display: inline-block; background: #f0fdf4; color: #15803d; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; font-weight: 600; margin: 0 3px; border: 1px solid #bbf7d0; }
+        
+        /* 3.1 Stat Cards */
+        .stat-box { background: var(--primary-color); color: white; padding: 20px; border-radius: 12px; text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 800; display: block; margin-bottom: 5px; }
+        .stat-label { font-size: 0.9rem; opacity: 0.9; }
+        
+        /* 4.9 Feature Grid */
+        .feature-hero { background: white; padding: 40px; border-radius: 24px; box-shadow: var(--card-shadow); margin-bottom: 40px; border: 1px solid rgba(139, 92, 246, 0.1); }
+        .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 30px; }
+        .feature-item { text-align: left; padding: 25px; background: #f8fafc; border-radius: 16px; transition: 0.3s; }
+        .feature-item:hover { background: #eff6ff; transform: translateY(-5px); }
+        .feature-icon { font-size: 2rem; margin-bottom: 15px; display: block; }
+        .feature-title { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin-bottom: 10px; display: block; }
+        .ai-box { background: linear-gradient(135deg, #1e2a78 0%, #312e81 100%); color: white; padding: 35px; border-radius: 20px; margin-top: 40px; position: relative; overflow: hidden; }
+        .ai-box::after { content: 'AI'; position: absolute; right: -20px; bottom: -40px; font-size: 10rem; font-weight: 900; opacity: 0.05; color: white; }
+        
+        /* --- SOP Process Flow Styles --- */
+        .process-container { display: flex; justify-content: space-between; gap: 15px; margin-bottom: 40px; overflow-x: auto; padding-bottom: 20px; }
+        .process-step { flex: 1; min-width: 180px; position: relative; }
+        .process-arrow { background: var(--gradient-primary); color: white; padding: 15px 10px; text-align: center; font-weight: 700; position: relative; clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%, 15% 50%); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; height: 60px; font-size: 1rem; }
+        .process-step:first-child .process-arrow { clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%); }
+        .process-details { font-size: 0.85rem; color: var(--text-light); background: white; padding: 15px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); height: calc(100% - 80px); }
+        .process-details ul { list-style: none; padding: 0; }
+        .process-details li { margin-bottom: 8px; position: relative; padding-left: 10px; }
+        .process-details li::before { content: '•'; color: var(--accent-color); position: absolute; left: 0; }
+
+        /* --- Accordion Styles --- */
+        .accordion { display: flex; flex-direction: column; gap: 15px; }
+        .accordion-item { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.03); border: 1px solid var(--border-color); }
+        .accordion-header { width: 100%; padding: 20px; background: white; border: none; text-align: left; font-size: 1rem; font-weight: 600; color: var(--primary-color); display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background 0.2s; }
+        .accordion-header:hover { background: #f3f4f6; }
+        .accordion-icon { width: 24px; height: 24px; position: relative; flex-shrink: 0; }
+        .accordion-icon::before, .accordion-icon::after { content: ''; position: absolute; background: var(--accent-color); top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .accordion-icon::before { width: 12px; height: 2px; }
+        .accordion-icon::after { width: 2px; height: 12px; transition: transform 0.3s; }
+        .accordion-item.active .accordion-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: #fafafa; }
+        .accordion-body { padding: 20px; color: var(--text-light); font-size: 0.95rem; border-top: 1px solid #f3f4f6; }
+        .accordion-body p { margin-bottom: 10px; }
+
+        /* --- Summary Final --- */
+        .summary-final { margin-top: 60px; padding: 40px; background: var(--primary-color); color: white; border-radius: 20px; text-align: center; }
+        .summary-final h3 { font-size: 1.5rem; margin-bottom: 20px; color: #fff; }
+
+        @media (max-width: 768px) { 
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } 
+            .hero h1 { font-size: 2.5rem; } 
+            section { padding: 60px 5%; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .process-container { flex-direction: column; }
+            .process-arrow { clip-path: none; border-radius: 8px; margin-bottom: 10px; }
+            .process-arrow::after { content: '↓'; margin-left: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#1e2a78" />
+                        <stop offset="100%" stop-color="#8b5cf6" />
+                    </linearGradient>
+                </defs>
+                <path d="M50 15C30.7 15 15 30.7 15 50C15 69.3 30.7 85 50 85C69.3 85 85 69.3 85 50C85 30.7 69.3 15 50 15ZM50 75C36.2 75 25 63.8 25 50C25 36.2 36.2 25 50 25C63.8 25 75 36.2 75 50C75 63.8 63.8 75 50 75Z" stroke="url(#logoGradient)" stroke-width="6"/>
+                <path d="M50 35V65M35 50H65" stroke="url(#logoGradient)" stroke-width="6" stroke-linecap="round"/>
+                <circle cx="50" cy="50" r="10" fill="url(#logoGradient)"/>
+            </svg>
+            <div class="logo-text">
+                颀阔智能
+                <span>INTELLIGENCE QIKUO</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>尚颀颀阔<br>Pre-REITs业务介绍材料</h1>
+            <h2>上海颀阔智能科技有限公司</h2>
+            <div class="hero-meta">2025年09月</div>
+        </div>
+    </div>
+
+    <!-- 章节一：REITs背景介绍 -->
+    <section id="chapter1">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">REITs背景介绍</h2>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">1.1 REITs简介</div>
+            <div class="highlight">
+                <p><strong>核心定义：</strong>"不动产投资信托基金"(Real Estate Investment Trust)</p>
+                <p><strong>国内常用名：</strong>“基础设施公募REITs”</p>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>一个生动的类比："公司上市" vs "资产上市"</h3>
+                    <ul>
+                        <li><strong>股票 (Stock):</strong> 你购买一家公司的股份，分享公司经营利润。</li>
+                        <li><strong>REITs:</strong> 你购买一揽子不动产（如商场、写字楼）的股份，分享其租金收益。</li>
+                        <li><strong>核心:</strong> REITs 将流动性差的“不动产”变成了流动性高的“证券”。</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>REITs的运作模式</h3>
+                    <ul>
+                        <li><strong>资产汇集：</strong>原始权益人（业主）将其持有的能产生稳定现金流的资产（如购物中心、高速公路）打包。</li>
+                        <li><strong>证券化发行：</strong>基金管理人将这些资产打包成基金份额（REITs），并在交易所上市交易。</li>
+                        <li><strong>公众投资：</strong>投资者像买卖股票一样，在二级市场购买REITs份额。</li>
+                        <li><strong>收益分配：</strong>REITs 将绝大部分租金等运营收入以股息形式强制分配给投资者。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">1.2 REITs的特点与优势</div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>01 特许经营权类 REITs</h3>
+                    <ul>
+                        <li><strong>关键词：</strong>高现金分派、类固收属性、本金摊还</li>
+                        <li><strong>典型资产：</strong>高速公路、清洁能源（风电/光伏）、污水处理、垃圾处理。</li>
+                        <li><strong>收益特征：</strong>
+                            <br>• 高现金流分派率：收益主要来源于特许经营期限内的收费（如过路费、电费），现金流充沛且稳定。通常分派率较高（往往在6%-10%区间）。
+                            <br>• 债性特征显著：资产价值随特许经营期结束归零，因此分红中包含“本金返还”和“投资收益”，适合追求长期稳定现金流的防御型投资者。
+                        </li>
+                        <li><strong>核心优势：</strong>抗周期能力强，受宏观经济波动影响较小，是优质的“类债券”配置工具。</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>02 产权类 REITs</h3>
+                    <ul>
+                        <li><strong>关键词：</strong>资产增值、抗通胀、股性特征</li>
+                        <li><strong>典型资产：</strong>产业园区、仓储物流、保障性租赁住房、消费基础设施（百货/购物中心）。</li>
+                        <li><strong>收益特征：</strong>
+                            <br>• 租金+增值双重收益：收益来源于租金收入及资产价值提升。虽然初始分派率相对较低（通常在3%-5%区间），但具备租金上涨和资产升值的潜力。
+                            <br>• 股性特征显著：拥有土地和物业的永久/长期产权，资产价值具有永续性，估值逻辑更接近股票，具备更强的进攻性。
+                        </li>
+                        <li><strong>核心优势：</strong>受益于经济增长和通胀，通过积极运营管理可实现资产增值，博取资本利得。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">1.3 REITs的市场发展</div>
+            <div class="highlight">
+                <p><strong>REITs的诞生：</strong>地点: 美国 (United States)，时间: 1960年</p>
+                <p>背景: 由艾森豪威尔总统签署法案，旨在让所有美国人，无论贫富，都能投资大型商业地产。</p>
+                <p>目标: 结合了股票的流动性与房地产的稳定性。</p>
+            </div>
+            <h3>中国REITs的发展历程</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>2020 试点启动：</strong>国家发改委与证监会联合发布通知，启动基础设施REITs试点。
+                </div>
+                <div class="timeline-item">
+                    <strong>2021 首批上市：</strong>首批9只C-REITs在沪深交易所成功上市，标志市场正式建立。
+                </div>
+                <div class="timeline-item">
+                    <strong>2022 扩容增类：</strong>首次“扩募”成功；资产类型扩展至保障性租赁住房（保租房）。
+                </div>
+                <div class="timeline-item">
+                    <strong>2023-24 纳入消费：</strong>市场扩展至消费基础设施（如购物中心），标志着重大突破。
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">1.4 REITs的交易结构</div>
+            <p>依据《公开募集基础设施证券投资基金指引（2020试行）》（中国证券监督管理委员会公告〔2020〕54号，以下简称《公募REITs指引》），基础设施公募REITs采用“公募基金+基础设施资产支持证券”的产品结构，80％以上基金资产投资于基础设施资产支持证券，公募基金持有资产支持证券（ABS）的全部份额；公募基金通过ABS持有基础设施项目公司全部股权，从而间接取得底层资产的完全所有权或经营权。</p>
+            <br>
+            <div class="card">
+                <h3>公募REITs交易涉及四个层面：</h3>
+                <ul>
+                    <li><strong>第一层，基础设施资产：</strong>即原始权益人拟用于发行公募REITs产品的底层资产；</li>
+                    <li><strong>第二层，项目公司层面：</strong>项目公司应享有基础设施项目完全的所有权及经营权，一般情况下，原始权益人通过资产重组的方式将基础设施资产单独装入该项目公司。</li>
+                    <li><strong>第三层，基础设施资产支持专项计划层面：</strong>该专项计划由计划管理人设立，是为了将项目公司资产进行证券化处理而设立的载体。在公募产品发行过程中，原始权益人将项目公司100%股权转让至专项计划。</li>
+                    <li><strong>第四层，基础设施基金层面：</strong>公募基金作为募集资金的载体，持有专项计划的全部份额。投资者及原始权益人认购基础设施基金份额，基金募集资金的80%以上投资于基础设施资产支持专项计划，公募基金的剩余资金可依法投资于利率债，AAA级信用债，或货币市场工具。</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>结论：</strong>从上述结构来看，实际上，基础设施基金就是在资产支持证券业务（ABS）的基础上增加了公募基金这样一层结构。</p>
+            </div>
+        </div>
+
+        <!-- 1.5 REVISED: 突出标记政策名称和资产种类 -->
+        <div class="slide-block">
+            <div class="slide-title">1.5 REITs市场：REITs资产种类简介</div>
+            <div class="policy-list">
+                <div class="policy-item">
+                    <span class="policy-title">958号文（试点启动）</span>
+                    <p>《国家发展改革委关于进一步做好基础设施领域不动产投资信托基金（REITs）试点工作的通知》规定的九大试点行业。与汽车产业链相关的主要包括：<span class="asset-tag">汽车及产业链的仓储物流</span>、<span class="asset-tag">园区基础设施</span>、市政基础设施中将<span class="asset-tag">停车场</span>新纳入试点。目前新型基础设施、旅游基础设施尚未有项目发行。</p>
+                </div>
+                <div class="policy-item">
+                    <span class="policy-title">常态化发行通知（消费）</span>
+                    <p>《关于进一步推进基础设施领域不动产投资信托基金（REITs）常态化发行相关工作的通知》研究支持增强消费能力、改善消费条件、创新消费场景的<span class="asset-tag">消费基础设施</span>发行基础设施REITs。优先支持<span class="asset-tag">百货商场</span>、<span class="asset-tag">购物中心</span>、<span class="asset-tag">农贸市场</span>等城乡商业网点项目，保障基本民生的<span class="asset-tag">社区商业项目</span>。</p>
+                </div>
+                <div class="policy-item">
+                    <span class="policy-title">1014号文（文旅）</span>
+                    <p>《关于全面推动基础设施领域不动产投资信托基金（REITs项目常态化发行的通知》（发改投资〔2024〕1014号）<span class="asset-tag">文化旅游基础设施</span>。包括<span class="asset-tag">自然文化遗产</span>、<span class="asset-tag">国家5A/4A级旅游景区</span>。在景区规划范围内、产权上归属于同一发起人(原始权益人)的配套旅游酒店可纳入项目底层资产；以及依法登记并在民政部门备案的<span class="asset-tag">养老项目设施</span>。</p>
+                </div>
+                <div class="policy-item">
+                    <span class="policy-title">782号文（细化扩充）</span>
+                    <p>关于进一步做好基础设施领域不动产投资信托基金(REITs)常态化申报推荐工作的通知(发改办投资〔2025〕782号)。该文件在延续1014号文等政策基础上，对REITs项目申报和资产范围作了进一步细化和扩充，主要内容包括：加快成熟资产类型项目申报（<span class="asset-tag">收费公路</span>、<span class="asset-tag">清洁能源</span>、<span class="asset-tag">仓储物流</span>、<span class="asset-tag">保障性租赁住房</span>等），加大潜在发行空间较大项目的组织力度（<span class="asset-tag">供热</span>、<span class="asset-tag">水利</span>、<span class="asset-tag">数据中心</span>等），积极推动新资产类型项目发行（<span class="asset-tag">铁路</span>、<span class="asset-tag">港口</span>、<span class="asset-tag">特高压输电</span>等新类型项目），明确支持民间投资项目，支持已上市REITs扩募。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">1.6 可申报公募REITs的资产类型</div>
+            <p class="highlight">PRE-REITs是公募REITs的“孵化期”，通过资产重组、运营优化等培育成熟资产；成熟后的资产可通过公募REITs实现证券化发行，完成从非标准化资产到标准化权益产品的转化。</p>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>资产大类</th>
+                            <th>二级资产类型</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>交通基础设施</td><td>收费公路、铁路、机场、港口项目</td></tr>
+                        <tr><td>能源基础设施</td><td>清洁能源发电：风电、太阳能（光伏）发电、水力发电、天然气发电、生物质发电、核电；储能：各类储能设施；燃煤机组：清洁低碳、灵活高效燃煤发电/热电联产（需满足灵活性、掺烧或 CCUS 条件）；特高压输电；增量配电网、微电网、充电基础设施</td></tr>
+                        <tr><td>市政基础设施</td><td>城镇供水、供气、供热项目；停车场项目</td></tr>
+                        <tr><td>生态环保基础设施</td><td>城镇污水／垃圾处理及资源化利用设施；固废/危废/医废处理设施；大宗固体废弃物综合利用设施</td></tr>
+                        <tr><td>仓储物流基础设施</td><td>向社会收费的仓库：通用仓库、冷库等专业仓库</td></tr>
+                        <tr><td>园区基础设施</td><td>位于自贸试验区、国家级新区、国家/省级开发区、战略性新兴产业集群内的：研发平台、工业厂房、创业孵化器、产业加速器、产业发展服务平台等。单体建筑内物理不可分割且产权同属一人的酒店/配套底商≤建筑面积 30%（特殊≤50%）可一并纳入</td></tr>
+                        <tr><td>新型基础设施</td><td>数据中心、人工智能基础设施；5G、通信铁塔、物联网、工业互联网、宽带网络；智能交通、智慧能源、智慧城市项目</td></tr>
+                        <tr><td>租赁住房</td><td>保障性租赁住房、公共租赁住房；专业机构持有并长期出租的市场化长租公寓；园区配套租赁住房（范围同园区基础设施）</td></tr>
+                        <tr><td>水利设施</td><td>具备供水、发电等功能的水利枢纽（含水库、泵站、灌区等）</td></tr>
+                        <tr><td>文化旅游基础设施</td><td>自然文化遗产、国家 AAAAA/AAAA 级旅游景区；景区规划范围内同一产权人持有的配套旅游酒店可一并纳入</td></tr>
+                        <tr><td>消费基础设施</td><td>百货商场、购物中心、商业街区、商业综合体、农贸市场；家居/建材/纺织等专业市场；社区商业。与消费设施物理不可分割且同产权的酒店、商业办公用房建筑面积合计≤30%，特殊≤50%</td></tr>
+                        <tr><td>养老设施</td><td>依法登记并在民政部门备案的养老项目</td></tr>
+                        <tr><td>其他基础设施</td><td>其他符合国家重大战略、发展规划、产业政策等要求的基础设施项目</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">1.7 政策指导</div>
+            <p>近年来，中央及各部委密集出台重磅政策，全力支持并持续“加码”公募REITs市场发展。从2021年的试点探索、2023年纳入消费基础设施，到2024年国家发改委正式推动REITs项目进入“常态化发行”新阶段，标志着REITs已从“试点”转向“扩容”的规范化发展期。这一系列信号清晰地表明了国家的核心战略意图：正加速通过REITs这一金融工具，打破传统投融资模式，高效盘活海量存量资产，引导社会资本和民间资本共同参与基础设施建设，形成“投资-退出-再投资”的良性循环。</p>
+            <div class="table-responsive" style="margin-top: 20px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="5%">序号</th>
+                            <th width="20%">政策文件名称</th>
+                            <th width="10%">发文机关</th>
+                            <th width="10%">发文时间</th>
+                            <th>主要内容</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>《关于进一步促进民间投资发展的若干措施》</td><td>国务院办公厅</td><td>2025年11月</td><td>在促进民间投资的多项措施中，明确提出要盘活存量资产。相关部委（国家发改委）在解读时强调，将支持更多符合条件的民间投资项目发行基础设施REITs。</td></tr>
+                        <tr><td>2</td><td>《关于进一步做好基础设施领域不动产投资信托基金(REITs)常态化申报推荐工作的通知》</td><td>国家发改委</td><td>2025年09月</td><td>进一步巩固常态化发行成果。重点提出要“积极支持民间投资项目发行上市”，并要求简化REITs通过扩募方式新购入项目的申报流程，旨在推动市场扩围增量。</td></tr>
+                        <tr><td>3</td><td>《关于全面推动基础设施领域不动产投资信托基金(REITs)项目常态化发行的通知》</td><td>国家发改委</td><td>2024年07月</td><td>推动REITs项目发行进入“常态化”新阶段，取代了此前的“试点”提法。强调要加快成熟资产类型项目的常态化申报，并积极推动新资产类型项目（如新能源、水利、新基建等）的推荐发行。</td></tr>
+                        <tr><td>4</td><td>《基础设施和公用事业特许经营管理办法（修订征求意见稿）》</td><td>国家发改委</td><td>2023年11月</td><td>鼓励保险资金通过债权、股权、资产证券化产品等多种方式为特许经营项目提供多元化资金支持。积极支持符合条件的特许经营项目发行基础设施领域不动产投资信托基金（REITs）。</td></tr>
+                        <tr><td>5</td><td>《关于进一步推进基础设施领域不动产投资信托基金（REITs）常态化发行相关工作的通知》</td><td>中国证监会</td><td>2023年03月</td><td>研究支持增强消费能力、改善消费条件、创新消费场景的消费基础设施发行基础设施REITs。优先支持百货商场、购物中心、农贸市场等城乡商业网点项目，保障基本民生的社区商业项目发行基础设施REITs。申报发行基础设施REITs的特许经营权、经营收益权类项目，基金存续期内部收益率（IRR）原则上不低于5%；非特许经营权、经营收益权类项目，预计未来3年每年净现金流分派率原则上不低于3.8%。</td></tr>
+                        <tr><td>6</td><td>《国务院办公厅关于进一步盘活存量资产扩大有效投资的意见》</td><td>国务院办公厅</td><td>2022年05月</td><td>经过多年投资建设，我国在基础设施等领域形成了一大批存量资产，为推动经济社会发展提供了重要支撑。有效盘活存量资产，形成存量资产和新增投资的良性循环，对于提升基础设施运营管理水平、拓宽社会投资渠道、合理扩大有效投资以及降低政府债务风险、降低企业负债水平等具有重要意义。一是重点盘活存量规模较大、当前收益较好或增长潜力较大的基础设施项目资产，包括交通、水利、清洁能源、保障性租赁住房、水电气热等市政设施、生态环保、产业园区、仓储物流、旅游、新型基础设施等。二是统筹盘活存量和改扩建有机结合的项目资产，包括综合交通枢纽改造、工业企业退城进园等。三是有序盘活长期闲置但具有较大开发利用价值的项目资产，包括老旧厂房、文化体育场馆和闲置土地等，以及国有企业开办的酒店、餐饮、疗养院等非主业资产。</td></tr>
+                        <tr><td>7</td><td>《关于进一步做好基础设施领域不动产投资信托基金（REITs）试点工作的通知》</td><td>国家发改委</td><td>2021年06月</td><td>（二）试点主要包括下列行业：2. 能源基础设施。包括风电、光伏发电、水力发电、天然气发电、生物质发电、核电等清洁能源项目，特高压输电项目，增量配电网、微电网、充电基础设施项目，分布式冷热电项目。3. 市政基础设施。包括城镇供水、供电、供气、供热项目， 以及停车场项目。7. 新型基础设施。包括数据中心类、人工智能项目，5G、通信铁塔、物联网、工业互联网、宽带网络、有线电视网络项目，智能交通、智慧能源、智慧城市项目。</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 章节二：Pre-REITs基金的逻辑 -->
+    <section id="chapter2">
+        <div class="section-header">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Pre-REITs基金的逻辑</h2>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">2.1 什么是Pre-REITs基金</div>
+            <ul>
+                <li>Pre-REITs是指在基础设施公募REITs正式设立和发行之前成立的，用于投资、收购、培育具有发行公募REITs潜力的基础设施的基金。其目的是对合适的基础设施进行运营、孵化，并通过发行公募REITs的形式实现退出。其表现形式主要是私募基金。</li>
+                <li>我国基础设施规模庞大，但符合发行条件的基础设施项目相对少。Pre-REITs收购、运营、培育基础设施项目，对其进行改造、重组，使其满足发行条件，有助于缩短申报、审批时间，加快盘活存量资产的速度。通过Pre-REITs在REITs发行前介入也有利于投资人提前锁定优质项目。</li>
+            </ul>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">2.2 公司股权上市vs资产REITs上市</div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>公司股权上市路径</h3>
+                    <p>影响估值因素：行业发展前景，市场份额，盈利能力</p>
+                    <div class="timeline">
+                        <div class="timeline-item"><strong>公司设立</strong>：天使轮 VC</div>
+                        <div class="timeline-item"><strong>公司发展</strong>：A轮 B轮 C轮... Pre-IPO</div>
+                        <div class="timeline-item"><strong>上市</strong>：IPO</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>资产REITs上市路径</h3>
+                    <p>影响估值因素：基于现金流表现，不同阶段投资人的收益率预期</p>
+                    <div class="timeline">
+                        <div class="timeline-item"><strong>资产形成</strong>：政府/基金盘活/市场</div>
+                        <div class="timeline-item"><strong>资产运营</strong>：Pre-REITs (ABS / CMBS / 持有型不动产)</div>
+                        <div class="timeline-item"><strong>上市</strong>：REITs</div>
+                    </div>
+                    <div class="highlight">
+                        <p>根据现金流按照15%的收益率对资产估值 -> 根据具备的金融产品的条件，借助资本市场更低成本的资金来置换资本金，提高资本金的使用效率 -> 5%</p>
+                        <p style="color: #b91c1c; font-weight: 700; font-size: 1.2em;">3 倍 的 估 值 提 升 ！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">2.3 市场痛点与解决方案</div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="color: #e11d48;">痛点</h3>
+                    <ul>
+                        <li>01 优质资产稀缺，发行流程长，对资产确权、现金流稳定性要求较高。</li>
+                        <li>02 对发行规模及储备资产要求较高，针对较为分散的优质资产难以归集。</li>
+                        <li>03 优质的运营机构往往需要以重资产投入的方式获取优质资产，资金压力大。</li>
+                        <li>04 低效资产培育周期长，期间现金流虽稳定但不足以支撑持续扩张。</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 style="color: #059669;">解决方案</h3>
+                    <ul>
+                        <li>01 赋能运营并提升资产价值：引入专业化运营管理和市场化激励机制，系统性提升资产的内生价值与运营效益，培育孵化资产，使其满足发行的现金流稳定性要求。</li>
+                        <li>02 发挥基金杠杆作用：通过设立Pre-REITs基金作为金融杠杆，归集较为分散的优质资产，引导社会资本精准投资于重点基础设施领域，解决规模与归集难题。</li>
+                        <li>03 优化财务结构，实现轻资产转型：通过基金收购存量资产，可实现资产真实出售与出表，直接降低企业资产负债率，支，实现从“重资产持有方”向“轻资产运营方”转型。</li>
+                        <li>04 构建资本循环，激活存量价值：将一次性资产处置升级为常态化的资本运作平台，形成“以存量盘活带动增量投资”的良性发展模式。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">2.5 接续产品比较</div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>产品阶段</th>
+                            <th>Pre-REITs</th>
+                            <th>ABS</th>
+                            <th>持有型不动产ABS</th>
+                            <th>C-REITs</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>产品规模</td><td>资产现金流+权利金覆盖本息</td><td>资产现金流覆盖本息</td><td>现金分派率产权3.8%，收益权5%</td><td>基本接近资产估值，规模最大</td></tr>
+                        <tr><td>资产合规性</td><td>符合资金方要求</td><td>接受无产权具备经营许可资质</td><td>权属清晰不存在转让限制</td><td>基本无任何瑕疵</td></tr>
+                        <tr><td>资金用途</td><td>可自由使用，建议部分用于改造提升</td><td>可自由使用，涉及对接公募的，建议确定用途</td><td>可自由使用，涉及对接公募的，建议确定用途</td><td>明确的募投项目</td></tr>
+                        <tr><td>融资成本</td><td>符合资金方要求</td><td>同期限信用债发行利率上下约10-20bps</td><td>向投资人分享的收益+管理费+发行费用</td><td>向投资人分享的收益+管理费+发行费用</td></tr>
+                        <tr><td>产品期限</td><td>一般为1-3年</td><td>一般为5年，极优质主体可延长至9年</td><td>与项目周期匹配，期限较长，一般可达到土地剩余期限</td><td>与项目周期匹配，期限较长，一般可达到土地剩余期限</td></tr>
+                        <tr><td>颀阔角色</td><td colspan="4">在资产从培育到成熟的全生命周期，我们始终专注于资产现金流的高效呈现，伴随资产共同成长。</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">2.6 Pre-REITs衔接REITs案例：华安张江产业园</div>
+            <ul>
+                <li>张江高科与光控安石先以Pre-REITs基金（光全投资）控股安恬投资取得张江光大园，配套并购/固资融资（约4.4亿/3.12亿）；随后华安张江REIT以约15亿元认购“国君资管张江光大园”ABS，ABS收购安恬100%股权并向安恬及中京电子放款以置换存量债务，完成“Pre-REITs→公募REITs”接力与基金退出。</li>
+                <li>这一案例充分展示了Pre-REITs通过公募REITs实现退出的巨大潜力。张江高科不仅作为主要出资人，还利用其丰富的开发运营经验，为项目提供支持，最终实现了约1.98亿元的高额退出收益。</li>
+            </ul>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">2.7 建信住房租赁基金持有型不动产ABS案例</div>
+            <ul>
+                <li>在建信住房ABS参考案例中，建行作为总协调人，建信住租公司作为运营管理牵头机构，负责统筹、协调和安排项目公司及目标项目的运管管理事项，并督促运营实施机构（V领地、领寓、泊寓）落实运营管理工作。</li>
+                <li>2024年7月2日，建信住房租赁基金持有型不动产资产支持专项计划（简称“建信住租ABS”）成功设立，发行规模11.7亿元，产品总期限为66年，并设置前8年每半年开放退出安排。</li>
+                <li>建信住租ABS是继全国首单高速公路资产持有型不动产ABS（即中交路建清西大桥持有型不动产资产支持专项计划）产品后，全国首单住房租赁持有型不动产ABS产品。与首单持有型不动产ABS产品相比，本次住房租赁ABS产品为首单“产权类”产品，进一步丰富了该产品对标公募REITs的资产大类类型。</li>
+            </ul>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">2.8 部分已设立Pre-REITs基金案例统计</div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>基金名称</th><th>管理人/核心出资方</th><th>主要资产</th><th>所在地点</th><th>退出预案</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>武汉高科申万宏源产业园区 Pre-REITs</td><td>武汉高科+申万宏源证券</td><td>武汉高科医疗器械园，位于武汉东湖高新区，是光谷生物城的重要组成部分。</td><td>武汉</td><td></td></tr>
+                        <tr><td>太仓世纪互联-大家投控数字新基建 Pre-REITs</td><td>世纪互联 + 大家投控</td><td>旗舰 IDC（ 210 MW ，规划 300 MW）</td><td>苏州太仓</td><td>运营≥3 年后转公募 REITs，或先行私募 REITs扩募</td></tr>
+                        <tr><td>亚盛医药-元联基金生物医药资产 Pre-REITs</td><td>元联基金 + 亚盛医药</td><td>苏州独墅湖全球产业基地 & 创新工场</td><td>苏州</td><td>待资产稳定后申报公募 REITs</td></tr>
+                        <tr><td>新建元集团-申万宏源产业园 Pre-REITs</td><td>申万宏源 + 新建元</td><td>工业园区、产业园组合</td><td>苏州</td><td>计划作为苏州产业园公募REITs 扩募储备</td></tr>
+                        <tr><td>京东金石（南京）智慧仓储物流 Pre-REITs</td><td>中信金石基金 + 京东产发</td><td>14 座高标仓</td><td>南京等 13 城</td><td>拟对接“京东仓储公募 REITs”下一轮扩募</td></tr>
+                        <tr><td>中金资本产业园Pre-REITs</td><td>中金资本+华润置地</td><td>广州润慧科技园占地面积约为3.6万方，总建筑面积约为11万方，总计容面积约为9万方，整体容积率为2.49，分两期开发</td><td>广州</td><td>未来优先通过发行公募REITs实现退出</td></tr>
+                        <tr><td>九州通医药物流仓储资产Pre-REITs</td><td>九州通+高和资本</td><td>医药物流仓储资产</td><td>上海 杭州 重庆</td><td>待资产稳定后申报公募 REITs</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 章节三：重点方向：工商业储能 -->
+    <section id="chapter3">
+        <div class="section-header">
+            <span class="section-number">03</span>
+            <h2 class="section-title">重点方向：工商业储能</h2>
+        </div>
+
+        <!-- 3.1 REVISED: 数据看板 -->
+        <div class="slide-block">
+            <div class="slide-title">3.1 中国能源结构快速转型</div>
+            <p style="margin-bottom: 20px;">能源供应高度清洁化。新型电力系统存在系统性变革：发电侧从火电为主转向风光发电为主；电网侧从单一大电网转向大电网与微电网并存；用户侧从仅为电力消费者转向既是消费者又是生产者。</p>
+            <div class="grid-4">
+                <div class="stat-box">
+                    <span class="stat-value">49%</span>
+                    <span class="stat-label">2020年煤电占比</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-value">24%</span>
+                    <span class="stat-label">2020年风光占比</span>
+                </div>
+                <div class="stat-box" style="background: var(--accent-color);">
+                    <span class="stat-value">79%</span>
+                    <span class="stat-label">2060年风光占比 (预测)</span>
+                </div>
+                <div class="stat-box" style="background: var(--accent-color);">
+                    <span class="stat-value">储能</span>
+                    <span class="stat-label">电网稳定关键</span>
+                </div>
+            </div>
+            <p style="margin-top: 20px;">“双碳”目标下，我国发电来源将以光伏为代表的新能源为主。波动性是新能源的重要特征，光伏出力曲线与电力负荷曲线严重不匹配。以新能源为主的电力输配系统不具备调节能力。工商业储能可承担部分调控功能，保障电网稳定运行。</p>
+        </div>
+
+        <!-- 3.2 REVISED: 栅格布局 -->
+        <div class="slide-block">
+            <div class="slide-title">3.2 工商业储能行业分析</div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>现代能源体系</h3>
+                    <p>强调源网荷储多向互动，鼓励投资电力需求侧资源，以对冲新能源发电占比提升、发电侧与用电侧长期的供求错配等对电网带来的冲击。新型储能设施成为关键保障。</p>
+                </div>
+                <div class="card">
+                    <h3>政策方面</h3>
+                    <p>2022年5月发改委出台《关于进一步推动新型储能参与电力市场和调度运用的通知》，支持用户侧储能发展。鼓励拉大电力中长期市场、现货市场上下限价格，增加用户侧储能获取收益渠道。</p>
+                </div>
+                <div class="card">
+                    <h3>经济性与远期</h3>
+                    <p>锂电产能过剩导致投资成本下降；代购电价峰谷价差增大，盈利能力增强。远期需求侧响应、电力市场化交易、虚拟电厂等有望丰富收益来源。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3.3 REVISED: 栅格布局 -->
+        <div class="slide-block">
+            <div class="slide-title">3.3 工商业储能市场分析</div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>市场阶段与机遇</h3>
+                    <p>储能行业发展趋势类似光伏，当前已跨越创新者阶段进入早期采用者阶段。预期2024-2025年加速向大众阶段跨越，跑马圈地正当时。上汽集团产业链拥有优质客户资源，新动力希望通过基金助力加速挖掘。</p>
+                </div>
+                <div class="card">
+                    <h3>国家战略确定性</h3>
+                    <p>建立新型电力系统，储能是压舱石。2023年可再生能源装机量占比超50%。为对冲新能源冲击，储能是国家坚定支持方向，先行者将具备优势。</p>
+                </div>
+            </div>
+            <div class="highlight" style="margin-top: 20px;">
+                <strong>负荷尖峰化趋势：</strong>未来峰谷价差的决定性变量是新型负荷尖峰化的速度。2023年新能源汽车保有量超2000万辆，预计2030年突破1亿辆，充电造成的最高电力负荷将达1亿千瓦，占全社会用电负荷的5%。
+            </div>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">3.4 工商业储能政策支持</div>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>序号</th><th>政策文件</th><th>发文机关</th><th>时间</th><th>主要内容</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td>《电力现货市场基本规则（试行）》</td><td>国家能源局</td><td>2023年9月</td><td>推动分布式发电、负荷聚合商、储能和虚拟电厂等新型经营主体参与交易。</td></tr>
+                        <tr><td>2</td><td>《关于建立健全电力辅助服务市场价格机制的通知》</td><td>国家发改委</td><td>2024年2月</td><td>规范辅助服务计价等市场规则，按照“谁服务、谁获利，谁受益、谁承担”的总体原则。</td></tr>
+                        <tr><td>3</td><td>《电力市场运行基本规则》</td><td>国家能源局</td><td>2024年5月</td><td>各地按照国家有关规定确定参与辅助服务市场的准入条件时，应当实行公平准入。</td></tr>
+                        <tr><td>4</td><td>《新型储能制造业高质量发展行动方案》</td><td>工商业等八部门</td><td>2025年2月</td><td>拓展用户侧储能多元应用面向数据中心、智算中心、通信基站、工业园区等。</td></tr>
+                        <tr><td>5</td><td>《新型储能规模化建设专项行动方案（2025—2027年）》</td><td>国家发改委 国家能源局</td><td>2025年8月</td><td>目标到2027年全国新型储能装机规模达到1.8亿千瓦以上。</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">3.5 工商侧储能投资逻辑</div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>01 峰谷价差套利 --电价差较为稳定，电价下行不影响储能</h3>
+                    <p>工商侧储能的收益主要源于峰谷电价差套利，项目测算时出于谨慎性原则，也仅考虑峰谷价差收益。</p>
+                    <p>概述：根据所在地分时代购电价政策（每月更新公布），电价低时通过用电企业向电网购电，电价高时向用电企业售电，实现套利。136号文要求新能源发电全面市场化交易的大背景下，上网电价下行，可能导致下网电价下行，但发电与用电时段之间的结构性摩擦更加凸显，电价下行电价差较为稳定，且长期有望走阔，光伏等发电设施收益下降，不影响储能基础套利收益。</p>
+                </div>
+                <div class="card">
+                    <h3>02 电力辅助服务 --试点逐步放开，政策市场双驱动</h3>
+                    <p>近年来逐渐开放的需求响应类电力辅助服务成为新增长点，创造超额收益机会。</p>
+                    <p>概述：工商业储能参与的主要是调峰服务，指储能设备在电力供大于需时，充电调峰，供小于需时，放电调峰的有偿辅助服务。并通过事前投标竞价形式确定报酬。近两年各地试点工商侧储能参与电力辅助服务，同业已有案例。上海市24年9月《新型储能产业发展实施方案》明确要求新并网绿电企业需自建或购买储能调峰能力，或参与调峰市场，创造市场需求。</p>
+                </div>
+                <div class="card">
+                    <h3>03 用电企业风险可控 --装机容量严控，储能柜可重复利用</h3>
+                    <p>主要收益源自峰谷价差套利，消纳情况成为收入的主要风险控制节点，一方面配储策略上控制装机容量，仅占企业用电的一小部分，另一方面储能柜可重复利用性强，极端情况下拆除投入其他项目可保障一定收益。</p>
+                    <p>配储策略中考虑了用电企业用电下行情况，储能设施在用电下降的情况下也能满负荷运行，不影响储能收益，具备一定风险点。基金所投储能设施在极端情况下可拆除重复利用，可收回部分约占投资的80%～90%。</p>
+                </div>
+                <div class="card">
+                    <h3>04 多元退出机制 --上市公司并表诉求叠加证券化机遇</h3>
+                    <p>上市公司收购：零部件供应链企业在新能源车转型的浪潮下寻找市场新机遇，通过收购并表能产生稳定现金流的储能资产提升上市公司财务表现。部分地方能源、交通领域国企表现出类似收购并表诉求。</p>
+                    <p>ABS：首单含储能基础资产ABS在深交所成功发行（港华智慧能源类REITs）。</p>
+                    <p>公募REITs：24年1014号文首次将储能设施列入REITs试点资产范围。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3.8 REVISED: 表格形式 -->
+        <div class="slide-block">
+            <div class="slide-title">3.8 智慧基建基金案例：核心条款</div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="20%">条款项目</th>
+                            <th>具体内容</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>基金名称</td><td>XX智慧基建基金（暂定名，以工商核准为准）</td></tr>
+                        <tr><td>普通合伙人/基金管理人</td><td>XX资本</td></tr>
+                        <tr><td>基金规模</td><td>【10,000】万元。</td></tr>
+                        <tr><td>基金类型/运作方式</td><td>股权投资基金；除后续交割以及《有限合伙协议》约定的合伙权益转让及退伙等情形外，本合伙企业原则上封闭运作。</td></tr>
+                        <tr><td>存续期限</td><td>基金存续期7年，其中投资期3年，运营退出期4年，经合伙人大会通过可以延长。</td></tr>
+                        <tr><td>投资领域</td><td>本基金将以股权投资的方式投资于使用动力新科储能集成系统的工商侧储能资产。</td></tr>
+                        <tr><td>管理费率</td><td>1%/年（管理费基数：未获返还的实缴出资总额）。</td></tr>
+                        <tr><td>收益分配</td><td>按照实缴出资比例，在收取管理费后，按如下顺序进行支付和分配：<br>1）合伙人实缴出资返还；<br>2）合伙人优先回报分配，直至按实缴出资实现年化单利【8】%的优先回报；<br>3）超额收益，上述1）、2）分配完毕如有剩余，剩余部分80%分配给LP，20%作为业绩报酬（carry）分配给GP。</td></tr>
+                        <tr><td>退出方式</td><td>ü 直接或间接通过发行基础设施领域不动产投资信托基金或持有型不动产ABS、类REITs等资产证券化产品的方式退出；<br>ü 以向第三方（包括LP或其关联方）协议转让的方式实现退出；<br>ü 将合伙企业的存续期限和/或合伙期限有限或无限期的延长。</td></tr>
+                        <tr><td>有限合伙人/LP</td><td>上汽金控、XX科技、深圳瑞能、XX母基金、XX创信。</td></tr>
+                        <tr><td>运营/投后管理</td><td>运营实施机构：由瑞能新动力负责资产运营及技术管控；数据服务机构：颀阔智能负责现金流的对比监控、运营数据及运营效能的监控。</td></tr>
+                        <tr><td>退出期特别条款</td><td>基金存续期满3年后，资产估值满足以下条件可提前退出：第三方支付的收购价格+资产包实际净现金流，所得的IRR不小于【8】%。</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">3.9 颀阔智能管理中的智慧能源</div>
+            <p><strong>系统展示：</strong>分布式储能运维云平台，实时显示平台接入概况（储能站数量109个，总装机功率53230kW，总装机容量106460kWh），电量指标（总充电量54853.97 MW-h，总放电量46891.92 MW-h），并包含储能效率分析。</p>
+        </div>
+    </section>
+
+    <!-- 章节四：重点方向：停车场 -->
+    <section id="chapter4">
+        <div class="section-header">
+            <span class="section-number">04</span>
+            <h2 class="section-title">重点方向：停车场</h2>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">4.1 停车场市场概况</div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>汽车保有量逐年增长，停车位缺口巨大</h3>
+                    <p>据公安部统计，2024年全国机动车保有量达4.35亿辆，其中汽车3.53亿辆。新注册登记汽车2690 万辆，新注册登记量已连续10年超过2000万辆。截至 2024 年年底，全国有 96 个城市的汽车保有量超过百万辆，与 2023年相比增加 2 个城市。其中 45 个城市超 200 万辆，26 个城市超 300 万辆，成都、北京、重庆、苏州、上海、郑州等 6 个城市超过 500 万辆。</p>
+                </div>
+                <div class="card">
+                    <h3>停车市场规模巨大</h3>
+                    <p>据国家发改委发布的数据显示，我国大城市小汽车与停车位的比例约为1:0.8，中小城市约为1:0.5，与发达国家的1:1.3相比，我国停车位比例仍然偏低，存在巨大的停车需求缺口。随着我国汽车保有量的逐年增长攀升，依附于汽车后市场的停车产业也将保持快速增长态势。据相关预计，2024 年中国停车收费行业市场规模将达到 1500 亿元，年复合增长率保持在 15% 以上。中商产业研究院发布的报告显示，2023 年中国智慧停车市场规模达到 230 亿元，近五年年均复合增长率达 16.24%。分析师预测，2024 年中国智慧停车市场规模将增至 250 亿元。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">4.2 停车场资产现状</div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>01 分散难管理</h3>
+                    <p>停车场做为基础设施的必要配套，分布在城市的各个角落该资产存在单体不大过于分散的特点，需要有高效的工具才能有效率的实现资产归集，统一管理，方能满足资产证券化的前提要求，为资产REITs上市做准备。</p>
+                </div>
+                <div class="card">
+                    <h3>02 管理效率低</h3>
+                    <p>尽管智能化停车管理系统正在逐步推广，但许多停车场仍然采用传统的人工管理方式，缺乏智能化、信息化的停车解决方案，导致停车资源浪费和使用效率不高，跑冒滴漏现象普遍存在。停车收费政策的不统一和不合理也影响了停车场资产的有效利用。</p>
+                </div>
+                <div class="card">
+                    <h3>03 估值增长空间大</h3>
+                    <p>根据智慧停车管理系在全国的46万余个停车位真实使用数据显示，单车位平均有效停车时长均值为7.57小时/天/车位，单车位平均有效收费时长均值仅为1.71小时/天/车位，大量应收款未最终入账，资产估值增长空间巨大。（数据更新至2024年12月）</p>
+                </div>
+                <div class="card">
+                    <h3>04 资产证券化率低</h3>
+                    <p>根据上交所近期专题会，对停车场类资产证券化的统计，规模仅66.2亿，发行未超过8单，对比整个资产体量万亿级别，增长空间巨大。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">4.3 政策导向和政府债务风险</div>
+            <div class="highlight">
+                <p>国家积极推动基础设施REITs政策出台 ，通过盘活地方政府存量资产 ，应对地方政府财政收入放缓、隐性债务风险增加、基建资金缺口扩大及存量资产运营管理不足等挑战 ， 缓解财政压力并支持新基建与民生工程。</p>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>01 政策导向</h3>
+                    <ul>
+                        <li>国家积极推动基础设施REITs发展</li>
+                        <li>2022年国务院办公厅印发《关于进一步盘活存量资产扩大有效投资的意见》（国办发〔2022〕 19号）</li>
+                        <li>基础设施REITs作为盘活存量、扩大投资的重要工具 ，试点范围和资产类型持续扩容</li>
+                        <li>停车场和储能设施作为城市重要基础设施 ，正逐步 纳入REITs的适格资产范围</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>02 地方政府挑战</h3>
+                    <ul>
+                        <li>财政收入增长放缓 ，隐性债务风险增加</li>
+                        <li>基础设施建设资金缺口扩大</li>
+                        <li>大量优质存量资产因缺乏专业化运营、现代化管理和有效的资本运作 ，未能充分发挥效益</li>
+                        <li>盘活存量资产能有效缓解财政压力 ，为新的基础设施建设和民生工程提供资金支持</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">4.4 Pre-REITs+ABS/REITs方案的优势</div>
+            <div class="grid-4">
+                <div class="card">
+                    <h3>01 优化财务结构，新增非税财政收入</h3>
+                    <p>通过设立基金收购存量资产，可实现资产的真实出售与出表，为城投企业带来非税财政收入的同时，直接降低企业资产负债率。资产盘活所回笼的资金，可用于置换高成本、短期限的存量债务，优化债务结构，降低财务费用。财务报表的改善有助于提升企业主体信用评级，为后续融资创造更为有利的条件。</p>
+                </div>
+                <div class="card">
+                    <h3>02 激活存量资产，逐步实现利润</h3>
+                    <p>引入市场化估值体系，将资产价值从传统的成本法，转变为基于未来稳定现金流预期的市场化估值法，实现资产价值最大化。此外，城投公司的关联投资主体亦可作为劣后级合伙人参与基金，随着现金流改善带来估值提升，分步发行ABS、持有型不动产ABS，最终通过REITs、退出，逐步实现利润同时获得超额收益。</p>
+                </div>
+                <div class="card">
+                    <h3>03 构建资本循环，保障可持续投资</h3>
+                    <p>打通“投、融、管、退”的全流程金融闭环，将一次性的资产处置升级为常态化的资本运作平台。有效破解城投企业依赖单一信贷渠道、陷入“借新还旧”债务循环的模式困局。增量资金无用途限制，形成“以存量盘活带动增量投资”的良性发展模式，为区域后续发展提供持续的资本支持。</p>
+                </div>
+                <div class="card">
+                    <h3>04 赋能运营角色转型，提升管理效益</h3>
+                    <p>支持城投公司从“重资产持有方”向“轻资产运营方”进行战略转型，其运营主体地位得以保留和强化。参照已发行公募REITs的成熟经验，建立与运营绩效直接挂钩的市场化激励机制。既能解决“重投资、轻运营”的普遍问题，又能充分调动其积极性，系统性地提升资产的内生价值与运营效益。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">4.5 基金的功能</div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>带动有效投资</h3>
+                    <p>1.通过收购底层现金流优质的资产，获取稳定的现金流收益。</p>
+                    <p>2.在低估值区间收购优质资产，通过颀阔对底层数据的监控管理，提升资产价值表现，符合公开市场发行条件时通过ABS或REITs发行退出，获取资产溢价的超额收益。</p>
+                    <p>3.锚定REITs发行的收益率要求，产权类3.8%、特许经营权类5%，逐步拓展可收购资产类别，包括智慧交通，智慧能源，智慧城市等同类资产的收购，扩大投资规模。</p>
+                </div>
+                <div class="card">
+                    <h3>盘活存量资产</h3>
+                    <p>1.针对政府平台的资产收购，可为地方政府或城投公司实现非税财政收入；同时通过在当地设立基金，可增加地方财税收入。</p>
+                    <p>2.国家发改委九大类REITs资产类别，通过设立Pre-REITs基金归集，培育资产，抢占市场先机，未来通过扩募扩大基金规模将具有先发优势。</p>
+                    <p>3.通过增量资产的滚动发行，为原始资产方提供盘活资金，带动增量资产建设与培育，形成良性循环。</p>
+                </div>
+                <div class="card">
+                    <h3>逐步实现利润</h3>
+                    <p>1.类比股权投资逻辑，从天使轮到A/B/C…Pre-IPO到公司上市，不断改善经营状况、提高净利润，公司净利润估值不断提升，最终通过上市实现溢价退出。</p>
+                    <p>2.资产REITs提供了相同的退出通道，资产估值相对较低时收购，通过运营提升和数字化管理监控，不断提升资产现金流表现，通过多种公开市场产品不断扩大发行规模，最终通过REITs上市实现溢价退出。</p>
+                    <p>3.依托颀阔智慧化系统，有助于更准确的对数据资产进行合理评估和定价。数据资产的确权入表为基金资产估值提供了更明确的依据，使基金的整体估值评估更精确。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">4.7 山东XX集团ABS发行规模预测</div>
+            <p>山东XX集团项目目标车位合计14535个，总价值合计16.1亿元。资产池共计17个项目，分别位于山东青岛，济南，临沂及黑龙江哈尔滨，其中业态以住宅为主，部分为商业办公。以上资产拟收购对价约4亿元，平均单车位收购价格27500元，根据部分已提供道闸数据的停车场库，过去一年加权平均有效停车时长为9.28小时，根据山东XX集团提供信息，临停收费备案价为6元/h，现执行收费标准在2-4元间不等，根据现金估值法进行发行规模预测，不同情况下ABS发行规模如下，其中绿色部分为采信区间，发行规模预计在9.39至18.9亿元之间。</p>
+            <p>假设发行规模取采信区间中值14.13亿，ABS发行成功，有限合伙企业即可实现10.13亿超额收益，收益率为253.25%，按照基金条款设置的条款进行分配，基石投资人将获得丰厚收益。如基金结构中设置优先级或运用银行杠杆，基石投资人收益率将进一步提高。</p>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">4.8 保利ABS成功发行案例</div>
+            <div class="card">
+                <p><strong>交易对手：</strong>保利发展控股集团股份有限公司</p>
+                <p><strong>发行规模：</strong>8.816亿</p>
+                <p><strong>发行时间：</strong>2021年9月</p>
+                <p><strong>底层资产：</strong>4个城市6个商业停车场资产</p>
+                <p><strong>交易形式：</strong>产权交易+抵押+优先回购权</p>
+                <p><strong>尚颀介入前收入对比：</strong>如重庆保利中心投资后收入增长61.66%，重庆保利时代广场投资后收入增长69.78%。</p>
+                <p><strong>差额补足：</strong>中投保作为差额支付承诺人，对优先级资产支持证券本息的差额部分进行差额补足。</p>
+                <p><strong>权利金支付：</strong>保利发展在履行优先回购权前，负有不可撤销的权利金支付义务：前5年，每年需支付的权利金为标的资产转让价款余额*6.05%，在第5年末，若保利发展未回购，则须将前5年的权利金补至五年每年年化费率9%，第6-10年，权利金年化费率为14.8%。</p>
+            </div>
+        </div>
+
+        <!-- 4.9 REVISED: 重构样式，重点内供风格 -->
+        <div class="slide-block">
+            <div class="slide-title">4.9 颀阔智能系统综合介绍</div>
+            <div class="feature-hero">
+                <h3 style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 15px;">一体化智慧停车场解决方案</h3>
+                <p>颀阔BI智慧停车场运营管理系统是一款专为现代停车场设计的一体化解决方案。它通过集成先进的物联网技术、大数据分析和人工智能算法，实现了对停车场资产的全面、实时监控与智能化管理。当前系统管理覆盖场库总数804个，车位数463,335个。</p>
+                <div class="grid-4" style="margin-top: 20px;">
+                    <div class="card" style="padding: 20px; text-align: center; border: none; box-shadow: none; background: #f3f4f6;">提升运营效率<br>实现精细化管理</div>
+                    <div class="card" style="padding: 20px; text-align: center; border: none; box-shadow: none; background: #f3f4f6;">最大化资产价值<br>增加收益</div>
+                    <div class="card" style="padding: 20px; text-align: center; border: none; box-shadow: none; background: #f3f4f6;">提升用户体验<br>便捷高效服务</div>
+                    <div class="card" style="padding: 20px; text-align: center; border: none; box-shadow: none; background: #f3f4f6;">数据驱动决策<br>赋能管理者</div>
+                </div>
+            </div>
+
+            <h4 style="font-size: 1.3rem; color: var(--primary-color); margin-bottom: 20px;">多维度掌握资产现状：财、人、物</h4>
+            <p>借鉴pre-REITs基金穿透式运营管理的核心理念，颀阔BI系统构建了“财、人、物”三位一体的智能管理体系，实现对停车场资产的全链条穿透式监控与管理，确保资产孵化过程更高效、风险更可控。</p>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">💰</span>
+                    <span class="feature-title">管好“钱”</span>
+                    <p>让每一分钱都产生价值：全周期资金监控、保障现金流稳定、提升资金效率。</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🧑‍💼</span>
+                    <span class="feature-title">管好“人”</span>
+                    <p>让运营团队专业高效：量化运营能力、驱动管理优化。</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🚧</span>
+                    <span class="feature-title">管好“物”</span>
+                    <p>让资产持续增值：底层资产实时监控、提升运营效率。</p>
+                </div>
+            </div>
+
+            <div class="ai-box">
+                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">AI报告：人工智能赋能的运营改进意见</h3>
+                <p>停车场业务数据纷繁复杂，我们基于智慧停车数据分析逻辑，训练了用于自动生成深度分析报告的智能体，通过灵活的对比维度，定期/不定期甚至针对某个时点出具分析报告，并给出建议与决策依据，高效应对停车场运营中出现的各类状况。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 章节五：公司简介 -->
+    <section id="chapter5">
+        <div class="section-header">
+            <span class="section-number">05</span>
+            <h2 class="section-title">公司简介</h2>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">6.1 上汽集团业务板块</div>
+            <p>整车（乘用车/商用车）、零部件（发动机/变速箱/底盘等）、移动出行和服务（智慧出行/智能物流等）、金融板块（汽车金融/产业投资）、国际经营（海外市场）、创新板块（用户型高科技公司）。</p>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">6.2 尚颀资本简介</div>
+            <p>上海尚颀投资管理合伙企业（有限合伙)（简称“尚颀资本”)于2012年注册成立，注册资本1亿元，2014年取得私募基金管理人牌照，编号P1002076，2017年完成市场化改制，目前资产管理规模累计超443亿元。尚颀资本是上汽集团旗下私募股权投资基金管理人，作为上汽集团金融平台上汽金控参股企业，依托上汽集团整体产业优势和上汽金控高效协同赋能，具有汽车产业背景与市场化机制的双重优势。尚颀资本专注于汽车产业链投资，布局新智驾、新智造、新能源、新材料生态相关领域，已投资宁德时代、晶晨股份、先惠技术、道通科技、长远锂科、积塔半导体、瑞浦能源、湖南裕能、慧瀚股份等200余家优质企业，助力实体经济发展，推动产业链转型升级。</p>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">6.3 颀阔智能主要业务方向</div>
+            <p>为了配合产品交易结构安排，公司就原创新业务部进行市场化改制，孵化成立上海颀阔智能科技有限公司，专业承担ABS、REITs、Pre-REITs等创新类业务。全力支持体系内业务，如集团内企业资产盘活，包括光伏、储能、充电、园区、租赁车辆等，以实现体系内资产的有效管理（即底层资产穿透的系统）和资本运营（持续的产品发行）。探索和开展体系外非涉房项目，如储能、充电、租赁车辆、停车场等现金流充裕场景，以推动公司业务的多元化发展。努力将公司打造成为数字化的科技型资产管理技术提供商，以提高公司的核心竞争力和市场地位。</p>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">6.4 集团专利注入，全方位支持体系业务资产运营升级</div>
+            <p>如获得上海汽车集团（北京）有限公司“新能源车辆主动消防系统及消防控制方法” 的专利技术实施许可，推广场端数字化建设，提供智联化的停车解决方案，实现集团内企业资产盘活。</p>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">6.6 中国城市公共交通协会副会长单位</div>
+            <p>2024年12月19日，中国停车产业大会如期举行，颀阔智能受邀担任主题嘉宾，并与中国城市公共交通协会举行了”停车数字化产业共建企业“的签约仪式，并担任中国城市公共交通协会城市停车分会副会长单位。未来，颀阔智能将继续响应国家政策指导，推进优质停车资产REITs上市，共同促进停车产业进入”金融化、数字化和智能化”的新阶段。</p>
+        </div>
+
+        <div class="slide-block">
+            <div class="slide-title">6.7 储备项目</div>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>项目名称</th><th>合作主体</th><th>底层资产</th><th>拟发行规模</th><th>门槛收益</th><th>状态</th></tr></thead>
+                    <tbody>
+                        <tr><td>XX智慧基建基金</td><td>XX资本</td><td>工商业储能资产</td><td>1亿</td><td>8%</td><td>LPA签署</td></tr>
+                        <tr><td>兖矿智慧能源X号基金</td><td>兖矿资本</td><td>工商业储能资产</td><td>2亿(拟)</td><td>8%</td><td>签署合作协议</td></tr>
+                        <tr><td>望仙谷Pre-REITs基金</td><td>望仙谷、江西财投</td><td>望仙谷景区</td><td>6-10亿(拟)</td><td>6%-8%</td><td>选择管理人</td></tr>
+                        <tr><td>山东新动能智慧停车盘活</td><td>新动能</td><td>烟台、淄博停车场</td><td>2-3亿(拟)</td><td>8%(拟)</td><td>确定资产</td></tr>
+                        <tr><td>北京公司存量资产盘活</td><td>上汽北京公司</td><td>办公楼、公寓</td><td>5876万（首期）</td><td>7%(拟)</td><td>协调筹备</td></tr>
+                        <tr><td>雅江商用车租赁</td><td>上汽北京公司</td><td>商用车租赁</td><td>8亿(拟)</td><td>7%(拟)</td><td>协调筹备</td></tr>
+                        <tr><td>具身机器人租赁</td><td>上汽北京公司</td><td>具身机器人租赁</td><td>3亿(拟)</td><td>7%(拟)</td><td>协调筹备</td></tr>
+                        <tr><td>重庆国泰优活广场</td><td>保税港务</td><td>商业体</td><td>7.5亿(拟)</td><td>8%(拟)</td><td>协调筹备</td></tr>
+                        <tr><td>充电站项目</td><td>惠程信息科技、爱克莱特科技</td><td>充电桩</td><td>3亿(拟)</td><td>8%(拟)</td><td>协调筹备</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 章节六：Q&A -->
+    <section id="chapter6">
+        <div class="section-header">
+            <span class="section-number">06</span>
+            <h2 class="section-title">Q&A 与 操作指引</h2>
+        </div>
+
+        <!-- PART A: FUNDING SIDE -->
+        <div style="margin-bottom: 60px;">
+            <h3 style="font-size: 1.8rem; color: var(--primary-color); margin-bottom: 30px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">Part A: 资金方 (找钱)</h3>
+
+            <!-- SOP Funding -->
+            <div class="slide-title">操作步骤 - 资金方</div>
+            <div class="process-container">
+                <div class="process-step">
+                    <div class="process-arrow">意向沟通</div>
+                    <div class="process-details">
+                        <ul>
+                            <li>了解资金属性、投资偏好</li>
+                            <li>初步了解内部决策机制</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-arrow">签订合作框架<br>/保密协议</div>
+                    <div class="process-details">
+                        <ul>
+                            <li>沟通业务模式</li>
+                            <li>推进协议签署</li>
+                            <li>该阶段可安排资金方线下拜访</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-arrow">匹配目标资产</div>
+                    <div class="process-details">
+                        <ul>
+                            <li>根据资金方诉求匹配资产</li>
+                            <li>进一步了解收益率、期限、结构化、规模、区域、增信要求</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-arrow">产品方案沟通</div>
+                    <div class="process-details">
+                        <ul>
+                            <li>对资产进行估值和方案设计</li>
+                            <li>进行方案沟通，进一步明确方案细节</li>
+                            <li>明确决策流程</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-arrow">资产尽调</div>
+                    <div class="process-details">
+                        <ul>
+                            <li>根据资金方要求进行资产尽调</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-arrow">签署协议<br>与落实</div>
+                    <div class="process-details">
+                        <ul>
+                            <li>签署相关协议</li>
+                            <li>推进产品落地</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q&A Funding -->
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">1. 如何发现、触达潜在的资金方？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>根据过往经验，省/市级投资平台一般都有盘活地方存量的任务，天然具备资产盘活的诉求，可以优先突破；其次是符合主业发展的地方国企、母基金等；接下来是AMC机构、险资等资金量大，成本较低，安全诉求高的金融机构；然后是其他市场化金融机构如信托、券商银行理财子等。以上偏向于国有资产盘活，也偏向于债性投资。如果是市场化基金，则优先以产业方出资以换取业务机会为主，政府引导基金、市场化投资机构都可作为重点攻克方向。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">2. 如何筛选能够匹配业务模式，有长期跟踪价值的资金方？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>首先了解是否投资压力，是否有资产类投资的诉求或配置意愿。如果已有相关战略安排，应尽快推进合作，优先了解资金方的投资诉求，如收益率、期限、结构化、规模、区域、增信要求、行业范围、产业协同要求等，并积极了解决策流程，结合资产方核心诉求，采用合适的估值方法对资产进行估值并设计交易方案。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">3. 对于暂无资产类投资的资金方应如何跟进？了解资金方的诉求后，如何快速找到匹配的项目？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p><strong>跟进策略：</strong>了解资金方过往投资偏好，根据资金方属性不同进行引导：对于地方国资平台，具有化债任务的资金方，我们提供新的化债产品，并能够带来国有资产增值保值的功能；对于金融机构，长期跟踪REITs市场动态，通过日常互动了解投资偏好的变化，资产类投资是长期趋势，针对优质资金方要有耐心，保持长线互动；对于产业方，优先了解核心诉求，在满足其核心诉求的情况下，撮合各方组建基金。</p>
+                            <p><strong>项目匹配：</strong>如果投资目标是成熟资产（停车场、工商业储能）可第一时间与我们同步，我们将在储备资产中进行匹配，如没有合适的资产，则可以按照资金方要求另行寻找：针对停车场，关注产权/经营权（明确资产类型），增信要求（确定产品结构，如需增信则优先考虑所属区域的国有基础设施资产），快速筛选出符合要求的资产方画像。针对储能资产，则重点关注是投新建还是存量，新建可考虑复制上述能源基金模式（有成熟的资产供给方），存量盘活则需要根据资金方诉求进一步寻找。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">4. 管理人是谁？实际运营方是谁？颀阔智能角色是什么？团队情况如何？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>管理人优先由资金方指定，颀阔也可根据资金方要求推荐有合作基础或同类投资经验的管理人团队；实际运营方根据不同行业有所不同，但都是在该行业内深耕的专业运营团队；颀阔智能作为“懂资产运营的数据服务商”，不直接参与运营，但为GP/LP穿透底层的数据资产管理和服务报告，通过AI及技术赋能资产价值，实时监控运营方运营效果，提供针对性决策建议及GP/LP要求的定制化数字服务报告。颀阔智能目前团队共11人，均在资产投资领域深耕多年。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">5. 如何基于金融方案，制作面向潜在资金方的推介材料？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>针对资金方的推介，应优先了解资金方的诉求，然后匹配合适的资产，以资产为切入点制作推介方案，前期的沟通以介绍颀阔模式为主，引导了解资金方诉求。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">6. 如何与资金方清楚地沟通资产信息，解答资金方问题，与资金方在金融方案上达成一致？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>在已了解资金方诉求，并签署框架合作及保密协议的前提下，应向资金方同步资产详细信息、估值模型、方案设计，并与资金方进行现场沟通，了解他们对方案的个性化要求。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">7. 如何基于资金方要求，配合出具、改进测算表？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>了解资金方的测算估值要求，以资金方的要求为主。请注意，在与资金方接洽的逻辑上与资产方不同，资产方为引导需求，而资金方则尽可能满足他们的需求。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">8. 如何配合资金方尽调，复核尽调，对前期金融方案做调整（如有）？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>同上，正式尽调时应与资金方明确颀阔的角色，是主导尽调还是配合尽调，或者是受托尽调，不同角色对应的尽调方式不同，但核心也是符合资金方的要求。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">9. 如何把控资金方的真实出资意愿？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>在签署框架合作及保密协议，并对产品方案沟通一致，完成资产尽调后，尽量以文件形式固定出资意愿，常见的可证明出资意愿的文件包括：出资意向函、会议纪要、公司决议、股东会决议等。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PART B: ASSET SIDE -->
+        <div style="margin-bottom: 60px;">
+            <h3 style="font-size: 1.8rem; color: var(--primary-color); margin-bottom: 30px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">Part B: 资产方 (找项目)</h3>
+
+            <!-- SOP Asset -->
+            <div class="slide-title">操作步骤 - 资产方</div>
+            <div class="process-container">
+                <div class="process-step">
+                    <div class="process-arrow">明确需求</div>
+                    <div class="process-details">
+                        <ul>
+                            <li>明确对方公司/个人诉求</li>
+                            <li>引导以投资逻辑参与基金</li>
+                            <li>确认以基石LP参与的可能</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-arrow">签订合作框架<br>/保密协议</div>
+                    <div class="process-details">
+                        <ul>
+                            <li>确定公司层面的合作意向</li>
+                            <li>初步约定各方角色和诉求</li>
+                            <li>协议签署后可安排线上沟通</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-arrow">收集资产信息</div>
+                    <div class="process-details">
+                        <ul>
+                            <li>在必备资料基础上尽可能获取详细的资产信息</li>
+                            <li>有助于降低后期落地难度</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-arrow">估值及<br>方案设计</div>
+                    <div class="process-details">
+                        <ul>
+                            <li>根据资产信息进行初步估值</li>
+                            <li>设计产品初步方案</li>
+                            <li>该环节可安排线上沟通/拜访</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-arrow">与GP/LP确定<br>合作意向</div>
+                    <div class="process-details">
+                        <ul>
+                            <li>根据方案进行合作伙伴遴选</li>
+                            <li>确定产品结构及边界条件</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-arrow">资产尽调<br>与落实</div>
+                    <div class="process-details">
+                        <ul>
+                            <li>进行资产尽调</li>
+                            <li>签署相关协议</li>
+                            <li>推进产品落地</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q&A Asset -->
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">1. 如何通过AI了解合作资产方的背景信息？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>可以借助kimi/豆包或其他大模型，打开联网模式，输入提示词：“你的任务是对指定的资产方进行背景调查。请仔细阅读以下资产方名称，并按照要求完成调查。资产方名称:XXX。调查内容包括但不限于：资产方的背景介绍，如所在地区、属于国央企/民营上市公司等；资产方的财务状况；资产方的经营状况；资产方的主体信用评级（如有）。请在调查过程中尽量收集丰富、全面的信息。请在回复写下你的调查结果。”</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">2. 与资产方第一次沟通时，如何让资产方快速了解自己的业务内容？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>颀阔孵化于上汽体系金控板块股权私募管理人尚颀资本，定位是“懂资产运营的数据服务商”，通过对底层资产的业务数据穿透式监控管理，修复资产现金流，通过不同金融产品配套实现价值重估。</p>
+                            <p>使用PPT或视频初步展示推介材料，重点在于Pre-REITs——ABS/REITs的结构、逻辑、优势介绍以及政策宣导，让资产方了解到国家对于发行公募REITs的支持（如湖北“三资”）。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">3. 如何判断资产方的意图与合作意愿？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>（1）首先是判断对方的意图（诉求）：相关业务对主体/关系人有什么好处？对方有什么样的资产？对于资产的处理目的是什么（盘活/买卖）？是否有出表/并表的需求？如果是存量资产盘活，对方是否愿意做次级并提供增信（如主体评级足够好）？</p>
+                            <p>（2）其次是判断对方的合作意愿，主要体现在：（1）对面是否为资产方企业有掌控力的领导？（2）第一次碰面（或者线上交流之后）是否愿意来拜访沟通？（3）另外，从对方第一次会面的态度: 是否愿意问问题？是否对宣讲展示了足够的兴趣？等也可以来侧面分析，这一方面可以使用颀阔智能开发的情绪态度分析智能体。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">4. 如何说服资产方愿意合作？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>首先，需要告诉资产方Pre-REITs基金的优点，包括但不限于：优化财务结构，新增非税财政收入、存量盘活带动新建增量、从重资产持有方向轻资产运营方转型、获取市场化的运营激励、服务区域发展战略，撬动社会资本等。</p>
+                            <p>（1）如果资产方的意图并非单纯买卖，则可以从投资角度去谈，即共同设立Pre-REITs私募基金，去持有、盘活优质资产（包括资产方自己的资产），资产方可以做次级LP，获取基金的超额收益。</p>
+                            <p>（2）如果对方是国企，涉及到自有存量资产盘活，通常会存在着持有时间较长的的固定资产/投资性房地产，由于取得成本低/计提折旧时间长导致账面价值通常低于市场评估的公允价值，通过设立Pre-REITs基金可立即实现利润，如果持有次级，通过后续持有型不动产ABS、REITs发行以及担任资产运营方，可以分步实现利润。</p>
+                            <p>单纯的项目融资不是颀阔的主要方向，传统融资行为不需要对底层资产进行穿透管理。我们模式的优势在于对资产的价值发现与重估，更多的是将具有潜力的资产通过基金进行归集和培育，通过不同产品配套阶段性实现利润，最终通过REITs发行上市。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">5. 为什么要先提供资产详细资料，而不是先沟通合作方案？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>优先由原始权益人协调实际运营方提供必备材料，同时获取更详细的资产信息可以从侧面印证关系人对资产的实际掌控力，降低后续落地难度。如不能获取或遇到较多阻碍，说明该线索掌控不足，后续盘活难度较大。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">6. 如何通过签署保密协议，来获取初步的资产尽调材料？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>首先和资产方沟通，如果可以获取初步尽调材料（即基于资产尽调材料清单）那么就直接获取材料，如果对方要提出签署保密协议，则可以提供保密协议，或者使用对方的保密协议，签署后再给出尽调材料清单。注意如果是对方提供保密协议的话，需要检查是否有对于自身不利的条款。</p>
+                            <p>签署保密协议的过程可以验证原始权益人管理层对资产盘活事项的支持程度和实际意愿，获取初步尽调材料为必备前提，可以此为切入点提出签署保密协议的要求。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">7. 如何基于不同的资产，提供不同的资产尽调材料清单？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>对于部分项目（停车场、储能、商业体、充电站、景区、产业园等），可以使用颀阔智能的资产尽调材料清单，对于其他的可申报公募REITs项目，在项目公司的尽调层面，总体来说是通用的，可以参考颀阔的资产尽调材料清单中的项目公司部分，在资产方面，结合已发同类型资产公募REITs的情况，围绕确权、现金流、风险、土地建设、日常运营及维护（重点是确权、现金流、底层资产运营数据）去编写资产尽调材料清单。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">8. 如何快速基于资产尽调材料/一手信息进行可行性判断与资产的初步测算？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>（1）可行性判断：资产权属是否清晰？（即是否资产无抵押/质押/融资租赁情况）（重要度高）；是否有成熟稳定的现金流？（重要度高）；是否有AA+国央企愿意做主体增信？（重要度高）；是否有地方平台愿意做基石LP（持有次级）？（重要度中）；对方的合作意愿如何？（重要度中）；对接方是SP，还是有掌控力的高层？（重要度中）请结合以上的沟通与分析，进行判断。</p>
+                            <p>（2）资产材料比对/复核：使用颀阔智能开发的尽调智能体，快速梳理材料以进行测算。</p>
+                            <p>（3）资产测算：请使用颀阔智能开发的资产测算智能体进行测算（资产对价、内部收益率、退出、分配等）。</p>
+                            <p>（4）运营数据分析：通过资产方提供的底层运营数据（如有），分析是否存在运营的疏漏以及资产增值机会。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">9. 如何与资产方沟通，签署战略合作协议？<span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>战略合作协议是前期保密协议的“进阶版”，主要是为了在确定基本方案和合作意向后，用于约定各方已达成一致的关键商务条件，主要用来确定合作边界，没有固定的内容限制，但一般是价格、成本、合作方式等，应根据具体的谈判情况及项目约定拟定。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PART C: SUMMARY -->
+        <div class="slide-block" style="margin-top: 80px;">
+            <h3 style="font-size: 1.8rem; color: var(--primary-color); margin-bottom: 30px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">总结与回顾</h3>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3>核心概念：什么是Pre-REITs？</h3>
+                    <p><strong>定义：</strong>Pre-REITs是公募REITs的“孵化器”。它在不动产上市前介入，通过私募基金形式收购、培育基础设施资产，使其满足发行条件，最终通过REITs或ABS退出。</p>
+                    <p><strong>比喻：</strong>如果REITs是“资产上市”（IPO），那么Pre-REITs就是资产的“A-C轮”融资。</p>
+                    <p><strong>逻辑：</strong>构建“募（基金）- 投（收购）- 管（运营）- 退（REITs/ABS）”的全生命周期金融闭环。</p>
+                </div>
+                <div class="card">
+                    <h3>两大重点赛道</h3>
+                    <p><strong>1. 工商业储能：</strong>能源转型刚需，利用峰谷电价差套利，现金流稳定。退出途径：上市公司并购或纳入新能源REITs。</p>
+                    <p><strong>2. 停车场：</strong>汽车保有量巨大但车位缺口大，强现金流资产，但管理效率低。打法：收购分散资产 -> 数字化改造 -> 提升收入 -> 达到发行标准。</p>
+                </div>
+            </div>
+
+            <div class="highlight" style="margin-top: 30px;">
+                <h3>颀阔的核心竞争力：怎么管？</h3>
+                <p><strong>双重基因：</strong>孵化于上汽尚颀资本，兼具“产业方（懂资产）”与“资本方（懂金融）”背景。</p>
+                <p><strong>科技赋能：</strong>区别于传统金融属性，颀阔提供数字化资产管理。储能监控效率，停车场穿透底层数据杜绝跑冒滴漏。</p>
+            </div>
+
+            <div class="summary-final">
+                <h3>一句话总结</h3>
+                <p style="font-size: 1.1rem; opacity: 0.9;">颀阔智能作为“懂资产运营的数据服务商”，通过“Pre-REITs基金+科技化运营”模式，提前锁定并培育工商业储能与停车场等可REITs优质基础设施资产，利用数据驱动、科技赋能实现资产增值，最终通过资产证券化（REITs/ABS）高溢价退出。</p>
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+        // Accordion Interaction
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const accordionItem = button.parentElement;
+                const content = accordionItem.querySelector('.accordion-content');
+                
+                // Toggle active class
+                accordionItem.classList.toggle('active');
+
+                // Animate height
+                if (accordionItem.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    content.style.maxHeight = 0;
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
