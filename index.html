@@ -32,7 +32,7 @@
         .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 10% 60px; background: var(--bg-alt); position: relative; overflow: hidden; }
         .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 80%; height: 200%; background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%); z-index: 0; }
         .hero-content { position: relative; z-index: 1; }
-        .hero h1 { font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 30px; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero h1 { font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 30px; background: var(--gradient-primary); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
         .hero h2 { font-size: 1.5rem; font-weight: 500; color: var(--text-light); margin-bottom: 60px; }
         .hero-meta { font-size: 1rem; color: var(--text-light); border-top: 1px solid #ddd; padding-top: 20px; display: inline-block; }
 
@@ -1010,17 +1010,17 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">上汽集团业务板块</div>
+            <div class="slide-title">集团业务板块</div>
             <p>整车（乘用车/商用车）、零部件（发动机/变速箱/底盘等）、移动出行和服务（智慧出行/智能物流等）、金融板块（汽车金融/产业投资）、国际经营（海外市场）、创新板块（用户型高科技公司）。</p>
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">尚颀资本简介</div>
+            <div class="slide-title">股东背景简介</div>
             <p>上海尚颀投资管理合伙企业（有限合伙)（简称“尚颀资本”)于2012年注册成立，注册资本1亿元，2014年取得私募基金管理人牌照，编号P1002076，2017年完成市场化改制，目前资产管理规模累计超443亿元。尚颀资本是上汽集团旗下私募股权投资基金管理人，作为上汽集团金融平台上汽金控参股企业，依托上汽集团整体产业优势和上汽金控高效协同赋能，具有汽车产业背景与市场化机制的双重优势。尚颀资本专注于汽车产业链投资，布局新智驾、新智造、新能源、新材料生态相关领域，已投资宁德时代、晶晨股份、先惠技术、道通科技、长远锂科、积塔半导体、瑞浦能源、湖南裕能、慧瀚股份等200余家优质企业，助力实体经济发展，推动产业链转型升级。</p>
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">颀阔智能主要业务方向</div>
+            <div class="slide-title">颀阔智能介绍</div>
             <p>为了配合产品交易结构安排，公司就原创新业务部进行市场化改制，孵化成立上海颀阔智能科技有限公司，专业承担ABS、REITs、Pre-REITs等创新类业务。全力支持体系内业务，如集团内企业资产盘活，包括光伏、储能、充电、园区、租赁车辆等，以实现体系内资产的有效管理（即底层资产穿透的系统）和资本运营（持续的产品发行）。探索和开展体系外非涉房项目，如储能、充电、租赁车辆、停车场等现金流充裕场景，以推动公司业务的多元化发展。努力将公司打造成为数字化的科技型资产管理技术提供商，以提高公司的核心竞争力和市场地位。</p>
         </div>
 
@@ -1041,13 +1041,12 @@
                     <thead><tr><th>项目名称</th><th>合作主体</th><th>底层资产</th><th>拟发行规模</th><th>门槛收益</th><th>状态</th></tr></thead>
                     <tbody>
                         <tr><td>XX智慧基建基金</td><td>XX资本</td><td>工商业储能资产</td><td>1亿</td><td>8%</td><td>LPA签署</td></tr>
-                        <tr><td>兖矿智慧能源X号基金</td><td>兖矿资本</td><td>工商业储能资产</td><td>2亿(拟)</td><td>8%</td><td>签署合作协议</td></tr>
+                        <tr><td>XX智慧能源基金</td><td>XX资本</td><td>工商业储能资产</td><td>2亿(拟)</td><td>8%</td><td>签署合作协议</td></tr>
                         <tr><td>望仙谷Pre-REITs基金</td><td>望仙谷、江西财投</td><td>望仙谷景区</td><td>6-10亿(拟)</td><td>6%-8%</td><td>选择管理人</td></tr>
-                        <tr><td>山东新动能智慧停车盘活</td><td>新动能</td><td>烟台、淄博停车场</td><td>2-3亿(拟)</td><td>8%(拟)</td><td>确定资产</td></tr>
+                        <tr><td>山东新动能智慧停车盘活</td><td>新动能</td><td>烟台、淄博停车场</td><td>2-3亿(拟)</td><td>8%(拟)</td><td>匹配资产</td></tr>
                         <tr><td>北京公司存量资产盘活</td><td>上汽北京公司</td><td>办公楼、公寓</td><td>5876万（首期）</td><td>7%(拟)</td><td>协调筹备</td></tr>
                         <tr><td>雅江商用车租赁</td><td>上汽北京公司</td><td>商用车租赁</td><td>8亿(拟)</td><td>7%(拟)</td><td>协调筹备</td></tr>
                         <tr><td>具身机器人租赁</td><td>上汽北京公司</td><td>具身机器人租赁</td><td>3亿(拟)</td><td>7%(拟)</td><td>协调筹备</td></tr>
-                        <tr><td>重庆国泰优活广场</td><td>保税港务</td><td>商业体</td><td>7.5亿(拟)</td><td>8%(拟)</td><td>协调筹备</td></tr>
                         <tr><td>充电站项目</td><td>惠程信息科技、爱克莱特科技</td><td>充电桩</td><td>3亿(拟)</td><td>8%(拟)</td><td>协调筹备</td></tr>
                     </tbody>
                 </table>
