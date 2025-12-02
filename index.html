@@ -19,6 +19,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body { font-family: var(--font-family); color: var(--text-main); line-height: 1.7; background-color: var(--bg-color); overflow-x: hidden; }
 
         /* --- Header & Logo --- */
@@ -208,15 +209,322 @@
         .summary-final { margin-top: 60px; padding: 40px; background: var(--primary-color); color: white; border-radius: 20px; text-align: center; }
         .summary-final h3 { font-size: 1.5rem; margin-bottom: 20px; color: #fff; }
 
-        @media (max-width: 768px) { 
-            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } 
-            .hero h1 { font-size: 2.5rem; } 
-            section { padding: 60px 5%; }
-            .feature-grid { grid-template-columns: 1fr; }
-            .process-container { flex-direction: column; }
-            .process-arrow { clip-path: none; border-radius: 8px; margin-bottom: 10px; }
-            .process-arrow::after { content: '↓'; margin-left: 10px; }
+        /* --- Side Navigation (Vertical Pill) --- */
+        #side-nav {
+            position: fixed;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            /* Glassmorphism */
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            border-radius: 50px;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            width: 60px;
+            /* Ensure height transition works */
+            max-height: 80vh;
+            overflow: visible; /* Allow tooltips to show */
         }
+
+        #side-nav.collapsed {
+            /* When collapsed, hide the list items but keep the toggle */
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(31, 38, 135, 0.1);
+        }
+
+        #nav-toggle {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background 0.3s;
+            box-shadow: 0 4px 10px rgba(30, 42, 120, 0.2);
+            z-index: 2;
+            flex-shrink: 0;
+        }
+
+        #nav-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        #side-nav.collapsed #nav-toggle {
+            transform: rotate(180deg);
+            background: var(--text-light); 
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            width: 100%;
+            
+            /* Animation properties */
+            opacity: 1;
+            max-height: 600px; /* Arbitrary large height */
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: top center;
+            transform: scaleY(1);
+        }
+
+        #side-nav.collapsed .nav-list {
+            opacity: 0;
+            max-height: 0;
+            margin: 0;
+            transform: scaleY(0);
+            pointer-events: none;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .nav-link.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(30, 42, 120, 0.3);
+            transform: scale(1.1);
+        }
+
+        .nav-icon {
+            /* Reset previous styles */
+            width: auto;
+            height: auto;
+            background: transparent;
+            border-radius: 0;
+            margin: 0;
+            box-shadow: none;
+            font-family: 'Arial', sans-serif; /* Ensure numbers look good */
+        }
+        
+        /* Remove the old nav-text that was expanding sideways */
+        .nav-text {
+            display: none; 
+        }
+
+        /* Floating Tooltip to the right */
+        .nav-link::after {
+            content: attr(data-title);
+            position: absolute;
+            left: 50px; /* Push to the right of the pill */
+            top: 50%;
+            transform: translateY(-50%) translateX(-10px);
+            background: rgba(30, 42, 120, 0.9); /* Dark tooltip */
+            backdrop-filter: blur(4px);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            pointer-events: none;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .nav-link:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            #side-nav { left: 10px; width: 50px; padding: 8px; }
+            .nav-link::after { display: none; } /* Hide tooltips on mobile */
+        }
+    
+        /* --- Sub Navigation Styles --- */
+        .nav-item-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .sub-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+        }
+
+        /* Expanded state for sub-list */
+        .nav-item-group.expanded .sub-nav-list {
+            max-height: 500px; /* Enough for sub items */
+            opacity: 1;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+        .sub-nav-link {
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(30, 42, 120, 0.2);
+            position: relative;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .sub-nav-link:hover {
+            background: var(--accent-color);
+            transform: scale(1.5);
+        }
+        
+        .sub-nav-link.active {
+            background: var(--primary-color);
+            transform: scale(1.3);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
+        /* Sub-nav Tooltip */
+        .sub-nav-link::after {
+            content: attr(data-title);
+            position: absolute;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%) translateX(-10px);
+            background: rgba(30, 42, 120, 0.95);
+            backdrop-filter: blur(4px);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            pointer-events: none;
+            white-space: nowrap;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1002;
+        }
+
+        .sub-nav-link:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        /* Adjust main nav link when expanded */
+        .nav-item-group.expanded .nav-link {
+            background: rgba(255,255,255,0.8);
+            color: var(--primary-color);
+        }
+
+    
+        /* --- Fix Scroll Position --- */
+        section, .slide-title, h3[id] {
+            scroll-margin-top: 100px;
+        }
+
+        /* --- Fix Tooltip Visibility --- */
+        /* Allow tooltip to overflow the nav container */
+        #side-nav {
+            overflow: visible !important;
+        }
+        
+        /* Fix sub-nav clipping */
+        .nav-item-group.expanded .sub-nav-list {
+            overflow: visible; 
+            /* Note: overflow: visible might conflict with height transition if not handled carefully.
+               However, since we use max-height, overflow:visible usually disables the clipping.
+               To keep animation, we might need JS or accept that during animation it is clipped.
+               But once expanded, it must be visible.
+               The current CSS has .nav-item-group.expanded .sub-nav-list { overflow: hidden ... } 
+               We need to override this when expanded, but maybe delay it?
+               Actually, if we just set it to visible, the slide down animation might show content instantly?
+               Let's test with just scroll-margin first and see if we can fix tooltip with z-index or position.
+               
+               Actually, if #side-nav has overflow:visible, and .sub-nav-list has overflow:visible, 
+               then the tooltip (absolute) will show.
+            */
+        }
+
+    
+        /* --- Home Link --- */
+        .home-link {
+            margin-left: auto; /* Push to right */
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 20px;
+            border: 1px solid rgba(30, 42, 120, 0.2);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.5);
+        }
+        .home-link:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(30, 42, 120, 0.15);
+            transform: translateY(-2px);
+        }
+        .home-icon {
+            font-size: 1.1em;
+            transition: transform 0.3s;
+        }
+        .home-link:hover .home-icon {
+            transform: translateX(3px) translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .home-link span:first-child { display: none; } /* Hide text on mobile, keep icon? or just simplified */
+            .home-link { padding: 8px; border-radius: 50%; width: 36px; height: 36px; justify-content: center; }
+            .home-icon { font-size: 1.2rem; margin: 0; }
+        }
+
     </style>
 </head>
 <body>
@@ -239,9 +547,14 @@
                 <span>INTELLIGENCE QIKUO</span>
             </div>
         </div>
+    
+        <a href="https://jmocoder.github.io/intelligence_qikuo/" class="home-link" target="_blank" rel="noopener noreferrer">
+            <span>返回官网</span>
+            <span class="home-icon">↗</span>
+        </a>
     </header>
 
-    <div class="hero">
+    <div class="hero" id="hero">
         <div class="hero-content">
             <h1>尚颀颀阔<br>Pre-REITs业务介绍材料</h1>
             <h2>上海颀阔智能科技有限公司</h2>
@@ -371,7 +684,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">REITs简介</div>
+            <div id="chapter1-sub1" class="slide-title">REITs简介</div>
             <div class="highlight">
                 <p><strong>核心定义：</strong>"不动产投资信托基金"(Real Estate Investment Trust)</p>
                 <p><strong>国内常用名：</strong>“基础设施公募REITs”</p>
@@ -398,7 +711,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">REITs的特点与优势</div>
+            <div id="chapter1-sub2" class="slide-title">REITs的特点与优势</div>
             <div class="grid-2">
                 <div class="card">
                     <h3>01 特许经营权类 REITs</h3>
@@ -428,7 +741,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">REITs的市场发展</div>
+            <div id="chapter1-sub3" class="slide-title">REITs的市场发展</div>
             <div class="highlight">
                 <p><strong>REITs的诞生：</strong>地点: 美国 (United States)，时间: 1960年</p>
                 <p>背景: 由艾森豪威尔总统签署法案，旨在让所有美国人，无论贫富，都能投资大型商业地产。</p>
@@ -452,7 +765,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">REITs的交易结构</div>
+            <div id="chapter1-sub4" class="slide-title">REITs的交易结构</div>
             <p>依据《公开募集基础设施证券投资基金指引（2020试行）》（中国证券监督管理委员会公告〔2020〕54号，以下简称《公募REITs指引》），基础设施公募REITs采用“公募基金+基础设施资产支持证券”的产品结构，80％以上基金资产投资于基础设施资产支持证券，公募基金持有资产支持证券（ABS）的全部份额；公募基金通过ABS持有基础设施项目公司全部股权，从而间接取得底层资产的完全所有权或经营权。</p>
             <br>
             <div class="card">
@@ -469,7 +782,7 @@
 
         <!-- 1.5 REVISED: 突出标记政策名称和资产种类 -->
         <div class="slide-block">
-            <div class="slide-title">REITs市场：REITs资产种类简介</div>
+            <div id="chapter1-sub5" class="slide-title">REITs市场：REITs资产种类简介</div>
             <div class="policy-list">
                 <div class="policy-item">
                     <span class="policy-title">958号文（试点启动）</span>
@@ -491,7 +804,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">可申报公募REITs的资产类型</div>
+            <div id="chapter1-sub6" class="slide-title">可申报公募REITs的资产类型</div>
             <p class="highlight">PRE-REITs是公募REITs的“孵化期”，通过资产重组、运营优化等培育成熟资产；成熟后的资产可通过公募REITs实现证券化发行，完成从非标准化资产到标准化权益产品的转化。</p>
             <div class="table-responsive">
                 <table>
@@ -521,7 +834,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">政策指导</div>
+            <div id="chapter1-sub7" class="slide-title">政策指导</div>
             <p>近年来，中央及各部委密集出台重磅政策，全力支持并持续“加码”公募REITs市场发展。从2021年的试点探索、2023年纳入消费基础设施，到2024年国家发改委正式推动REITs项目进入“常态化发行”新阶段，标志着REITs已从“试点”转向“扩容”的规范化发展期。这一系列信号清晰地表明了国家的核心战略意图：正加速通过REITs这一金融工具，打破传统投融资模式，高效盘活海量存量资产，引导社会资本和民间资本共同参与基础设施建设，形成“投资-退出-再投资”的良性循环。</p>
             <div class="table-responsive" style="margin-top: 20px;">
                 <table>
@@ -556,7 +869,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">什么是Pre-REITs基金</div>
+            <div id="chapter2-sub1" class="slide-title">什么是Pre-REITs基金</div>
             <ul>
                 <li>Pre-REITs是指在基础设施公募REITs正式设立和发行之前成立的，用于投资、收购、培育具有发行公募REITs潜力的基础设施的基金。其目的是对合适的基础设施进行运营、孵化，并通过发行公募REITs的形式实现退出。其表现形式主要是私募基金。</li>
                 <li>我国基础设施规模庞大，但符合发行条件的基础设施项目相对少。Pre-REITs收购、运营、培育基础设施项目，对其进行改造、重组，使其满足发行条件，有助于缩短申报、审批时间，加快盘活存量资产的速度。通过Pre-REITs在REITs发行前介入也有利于投资人提前锁定优质项目。</li>
@@ -564,7 +877,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">公司股权上市vs资产REITs上市</div>
+            <div id="chapter2-sub2" class="slide-title">公司股权上市vs资产REITs上市</div>
             <div class="grid-2">
                 <div class="card">
                     <h3>公司股权上市路径</h3>
@@ -592,7 +905,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">市场痛点与解决方案</div>
+            <div id="chapter2-sub3" class="slide-title">市场痛点与解决方案</div>
             <div class="grid-2">
                 <div class="card">
                     <h3 style="color: #e11d48;">痛点</h3>
@@ -616,7 +929,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">接续产品比较</div>
+            <div id="chapter2-sub4" class="slide-title">接续产品比较</div>
             <div class="table-responsive">
                 <table>
                     <thead>
@@ -641,7 +954,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">Pre-REITs衔接REITs案例：华安张江产业园</div>
+            <div id="chapter2-sub5" class="slide-title">Pre-REITs衔接REITs案例：华安张江产业园</div>
             <ul>
                 <li>张江高科与光控安石先以Pre-REITs基金（光全投资）控股安恬投资取得张江光大园，配套并购/固资融资（约4.4亿/3.12亿）；随后华安张江REIT以约15亿元认购“国君资管张江光大园”ABS，ABS收购安恬100%股权并向安恬及中京电子放款以置换存量债务，完成“Pre-REITs→公募REITs”接力与基金退出。</li>
                 <li>这一案例充分展示了Pre-REITs通过公募REITs实现退出的巨大潜力。张江高科不仅作为主要出资人，还利用其丰富的开发运营经验，为项目提供支持，最终实现了约1.98亿元的高额退出收益。</li>
@@ -649,7 +962,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">建信住房租赁基金持有型不动产ABS案例</div>
+            <div id="chapter2-sub6" class="slide-title">建信住房租赁基金持有型不动产ABS案例</div>
             <ul>
                 <li>在建信住房ABS参考案例中，建行作为总协调人，建信住租公司作为运营管理牵头机构，负责统筹、协调和安排项目公司及目标项目的运管管理事项，并督促运营实施机构（V领地、领寓、泊寓）落实运营管理工作。</li>
                 <li>2024年7月2日，建信住房租赁基金持有型不动产资产支持专项计划（简称“建信住租ABS”）成功设立，发行规模11.7亿元，产品总期限为66年，并设置前8年每半年开放退出安排。</li>
@@ -658,7 +971,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">部分已设立Pre-REITs基金案例统计</div>
+            <div id="chapter2-sub7" class="slide-title">部分已设立Pre-REITs基金案例统计</div>
             <div class="table-responsive">
                 <table>
                     <thead>
@@ -687,7 +1000,7 @@
 
         <!-- 3.1 REVISED: 数据看板 -->
         <div class="slide-block">
-            <div class="slide-title">中国能源结构快速转型</div>
+            <div id="chapter3-sub1" class="slide-title">中国能源结构快速转型</div>
             <p style="margin-bottom: 20px;">能源供应高度清洁化。新型电力系统存在系统性变革：发电侧从火电为主转向风光发电为主；电网侧从单一大电网转向大电网与微电网并存；用户侧从仅为电力消费者转向既是消费者又是生产者。</p>
             <div class="grid-4">
                 <div class="stat-box">
@@ -712,7 +1025,7 @@
 
         <!-- 3.2 REVISED: 栅格布局 -->
         <div class="slide-block">
-            <div class="slide-title">工商业储能行业分析</div>
+            <div id="chapter3-sub2" class="slide-title">工商业储能行业分析</div>
             <div class="grid-3">
                 <div class="card">
                     <h3>现代能源体系</h3>
@@ -731,7 +1044,7 @@
 
         <!-- 3.3 REVISED: 栅格布局 -->
         <div class="slide-block">
-            <div class="slide-title">工商业储能市场分析</div>
+            <div id="chapter3-sub3" class="slide-title">工商业储能市场分析</div>
             <div class="grid-2">
                 <div class="card">
                     <h3>市场阶段与机遇</h3>
@@ -748,7 +1061,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">工商业储能政策支持</div>
+            <div id="chapter3-sub4" class="slide-title">工商业储能政策支持</div>
             <div class="table-responsive">
                 <table>
                     <thead><tr><th>序号</th><th>政策文件</th><th>发文机关</th><th>时间</th><th>主要内容</th></tr></thead>
@@ -764,7 +1077,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">工商侧储能投资逻辑</div>
+            <div id="chapter3-sub5" class="slide-title">工商侧储能投资逻辑</div>
             <div class="grid-2">
                 <div class="card">
                     <h3>01 峰谷价差套利 --电价差较为稳定，电价下行不影响储能</h3>
@@ -792,7 +1105,7 @@
 
         <!-- 3.8 REVISED: 表格形式 -->
         <div class="slide-block">
-            <div class="slide-title">智慧基建基金案例：核心条款</div>
+            <div id="chapter3-sub6" class="slide-title">智慧基建基金案例：核心条款</div>
             <div class="table-responsive">
                 <table>
                     <thead>
@@ -820,7 +1133,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">颀阔智能管理中的智慧能源</div>
+            <div id="chapter3-sub7" class="slide-title">颀阔智能管理中的智慧能源</div>
             <p><strong>系统展示：</strong>分布式储能运维云平台，实时显示平台接入概况（储能站数量109个，总装机功率53230kW，总装机容量106460kWh），电量指标（总充电量54853.97 MW-h，总放电量46891.92 MW-h），并包含储能效率分析。</p>
         </div>
     </section>
@@ -833,7 +1146,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">停车场市场概况</div>
+            <div id="chapter4-sub1" class="slide-title">停车场市场概况</div>
             <div class="grid-2">
                 <div class="card">
                     <h3>汽车保有量逐年增长，停车位缺口巨大</h3>
@@ -847,7 +1160,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">停车场资产现状</div>
+            <div id="chapter4-sub2" class="slide-title">停车场资产现状</div>
             <div class="grid-2">
                 <div class="card">
                     <h3>01 分散难管理</h3>
@@ -869,7 +1182,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">政策导向和政府债务风险</div>
+            <div id="chapter4-sub3" class="slide-title">政策导向和政府债务风险</div>
             <div class="highlight">
                 <p>国家积极推动基础设施REITs政策出台 ，通过盘活地方政府存量资产 ，应对地方政府财政收入放缓、隐性债务风险增加、基建资金缺口扩大及存量资产运营管理不足等挑战 ， 缓解财政压力并支持新基建与民生工程。</p>
             </div>
@@ -896,7 +1209,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">Pre-REITs+ABS/REITs方案的优势</div>
+            <div id="chapter4-sub4" class="slide-title">Pre-REITs+ABS/REITs方案的优势</div>
             <div class="grid-4">
                 <div class="card">
                     <h3>01 优化财务结构，新增非税财政收入</h3>
@@ -918,7 +1231,7 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">基金的功能</div>
+            <div id="chapter4-sub5" class="slide-title">基金的功能</div>
             <div class="grid-3">
                 <div class="card">
                     <h3>带动有效投资</h3>
@@ -942,13 +1255,13 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">山东XX集团ABS发行规模预测</div>
+            <div id="chapter4-sub6" class="slide-title">山东XX集团ABS发行规模预测</div>
             <p>山东XX集团项目目标车位合计14535个，总价值合计16.1亿元。资产池共计17个项目，分别位于山东青岛，济南，临沂及黑龙江哈尔滨，其中业态以住宅为主，部分为商业办公。以上资产拟收购对价约4亿元，平均单车位收购价格27500元，根据部分已提供道闸数据的停车场库，过去一年加权平均有效停车时长为9.28小时，根据山东XX集团提供信息，临停收费备案价为6元/h，现执行收费标准在2-4元间不等，根据现金估值法进行发行规模预测，不同情况下ABS发行规模如下，其中绿色部分为采信区间，发行规模预计在9.39至18.9亿元之间。</p>
             <p>假设发行规模取采信区间中值14.13亿，ABS发行成功，有限合伙企业即可实现10.13亿超额收益，收益率为253.25%，按照基金条款设置的条款进行分配，基石投资人将获得丰厚收益。如基金结构中设置优先级或运用银行杠杆，基石投资人收益率将进一步提高。</p>
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">保利ABS成功发行案例</div>
+            <div id="chapter4-sub7" class="slide-title">保利ABS成功发行案例</div>
             <div class="card">
                 <p><strong>交易对手：</strong>保利发展控股集团股份有限公司</p>
                 <p><strong>发行规模：</strong>8.816亿</p>
@@ -963,7 +1276,7 @@
 
         <!-- 4.9 REVISED: 重构样式，重点内供风格 -->
         <div class="slide-block">
-            <div class="slide-title">颀阔智能系统综合介绍</div>
+            <div id="chapter4-sub8" class="slide-title">颀阔智能系统综合介绍</div>
             <div class="feature-hero">
                 <h3 style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 15px;">一体化智慧停车场解决方案</h3>
                 <p>颀阔BI智慧停车场运营管理系统是一款专为现代停车场设计的一体化解决方案。它通过集成先进的物联网技术、大数据分析和人工智能算法，实现了对停车场资产的全面、实时监控与智能化管理。当前系统管理覆盖场库总数804个，车位数463,335个。</p>
@@ -1010,32 +1323,32 @@
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">集团业务板块</div>
+            <div id="chapter5-sub1" class="slide-title">集团业务板块</div>
             <p>整车（乘用车/商用车）、零部件（发动机/变速箱/底盘等）、移动出行和服务（智慧出行/智能物流等）、金融板块（汽车金融/产业投资）、国际经营（海外市场）、创新板块（用户型高科技公司）。</p>
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">股东背景简介</div>
+            <div id="chapter5-sub2" class="slide-title">股东背景简介</div>
             <p>上海尚颀投资管理合伙企业（有限合伙)（简称“尚颀资本”)于2012年注册成立，注册资本1亿元，2014年取得私募基金管理人牌照，编号P1002076，2017年完成市场化改制，目前资产管理规模累计超443亿元。尚颀资本是上汽集团旗下私募股权投资基金管理人，作为上汽集团金融平台上汽金控参股企业，依托上汽集团整体产业优势和上汽金控高效协同赋能，具有汽车产业背景与市场化机制的双重优势。尚颀资本专注于汽车产业链投资，布局新智驾、新智造、新能源、新材料生态相关领域，已投资宁德时代、晶晨股份、先惠技术、道通科技、长远锂科、积塔半导体、瑞浦能源、湖南裕能、慧瀚股份等200余家优质企业，助力实体经济发展，推动产业链转型升级。</p>
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">颀阔智能介绍</div>
+            <div id="chapter5-sub3" class="slide-title">颀阔智能介绍</div>
             <p>为了配合产品交易结构安排，公司就原创新业务部进行市场化改制，孵化成立上海颀阔智能科技有限公司，专业承担ABS、REITs、Pre-REITs等创新类业务。全力支持体系内业务，如集团内企业资产盘活，包括光伏、储能、充电、园区、租赁车辆等，以实现体系内资产的有效管理（即底层资产穿透的系统）和资本运营（持续的产品发行）。探索和开展体系外非涉房项目，如储能、充电、租赁车辆、停车场等现金流充裕场景，以推动公司业务的多元化发展。努力将公司打造成为数字化的科技型资产管理技术提供商，以提高公司的核心竞争力和市场地位。</p>
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">集团专利注入，全方位支持体系业务资产运营升级</div>
+            <div id="chapter5-sub4" class="slide-title">集团专利注入，全方位支持体系业务资产运营升级</div>
             <p>如获得上海汽车集团（北京）有限公司“新能源车辆主动消防系统及消防控制方法” 的专利技术实施许可，推广场端数字化建设，提供智联化的停车解决方案，实现集团内企业资产盘活。</p>
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">中国城市公共交通协会副会长单位</div>
+            <div id="chapter5-sub5" class="slide-title">中国城市公共交通协会副会长单位</div>
             <p>2024年12月19日，中国停车产业大会如期举行，颀阔智能受邀担任主题嘉宾，并与中国城市公共交通协会举行了”停车数字化产业共建企业“的签约仪式，并担任中国城市公共交通协会城市停车分会副会长单位。未来，颀阔智能将继续响应国家政策指导，推进优质停车资产REITs上市，共同促进停车产业进入”金融化、数字化和智能化”的新阶段。</p>
         </div>
 
         <div class="slide-block">
-            <div class="slide-title">储备项目</div>
+            <div id="chapter5-sub6" class="slide-title">储备项目</div>
             <div class="table-responsive">
                 <table>
                     <thead><tr><th>项目名称</th><th>合作主体</th><th>底层资产</th><th>拟发行规模</th><th>门槛收益</th><th>状态</th></tr></thead>
@@ -1063,10 +1376,10 @@
 
         <!-- PART A: FUNDING SIDE -->
         <div style="margin-bottom: 60px;">
-            <h3 style="font-size: 1.8rem; color: var(--primary-color); margin-bottom: 30px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">Part A: 资金方 (找钱)</h3>
+            <h3 id="chapter6-sub3" style="font-size: 1.8rem; color: var(--primary-color); margin-bottom: 30px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">Part A: 资金方 (找钱)</h3>
 
             <!-- SOP Funding -->
-            <div class="slide-title">操作步骤 - 资金方</div>
+            <div id="chapter6-sub1" class="slide-title">操作步骤 - 资金方</div>
             <div class="process-container">
                 <div class="process-step">
                     <div class="process-arrow">意向沟通</div>
@@ -1213,10 +1526,10 @@
 
         <!-- PART B: ASSET SIDE -->
         <div style="margin-bottom: 60px;">
-            <h3 style="font-size: 1.8rem; color: var(--primary-color); margin-bottom: 30px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">Part B: 资产方 (找项目)</h3>
+            <h3 id="chapter6-sub4" style="font-size: 1.8rem; color: var(--primary-color); margin-bottom: 30px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">Part B: 资产方 (找项目)</h3>
 
             <!-- SOP Asset -->
-            <div class="slide-title">操作步骤 - 资产方</div>
+            <div id="chapter6-sub2" class="slide-title">操作步骤 - 资产方</div>
             <div class="process-container">
                 <div class="process-step">
                     <div class="process-arrow">明确需求</div>
@@ -1374,7 +1687,7 @@
 
         <!-- PART C: SUMMARY -->
         <div class="slide-block" style="margin-top: 80px;">
-            <h3 style="font-size: 1.8rem; color: var(--primary-color); margin-bottom: 30px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">总结与回顾</h3>
+            <h3 id="chapter6-sub5" style="font-size: 1.8rem; color: var(--primary-color); margin-bottom: 30px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">总结与回顾</h3>
             
             <div class="grid-2">
                 <div class="card">
@@ -1420,6 +1733,235 @@
                 } else {
                     content.style.maxHeight = 0;
                 }
+            });
+        });
+    </script>
+
+    <!-- Fancy Side Navigation -->
+        <!-- Fancy Side Navigation -->
+    <nav id="side-nav" class="collapsed">
+        <button id="nav-toggle" aria-label="Toggle Navigation">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <ul class="nav-list">
+            <li><a href="#hero" class="nav-link" data-title="首页"><span class="nav-icon">🏠</span><span class="nav-text">首页</span></a></li>
+            <li><a href="#directory" class="nav-link" data-title="目录"><span class="nav-icon">📑</span><span class="nav-text">目录</span></a></li>
+            <li class="nav-item-group">
+                <a href="#chapter1" class="nav-link main-link" data-title="REITs背景"><span class="nav-icon">01</span><span class="nav-text">REITs背景</span></a>
+                <ul class="sub-nav-list">
+                    <li><a href="#chapter1-sub1" class="sub-nav-link" data-title="REITs简介"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter1-sub2" class="sub-nav-link" data-title="REITs的特点与优势"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter1-sub3" class="sub-nav-link" data-title="REITs的市场发展"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter1-sub4" class="sub-nav-link" data-title="REITs的交易结构"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter1-sub5" class="sub-nav-link" data-title="REITs市场：REITs资产种类简介"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter1-sub6" class="sub-nav-link" data-title="可申报公募REITs的资产类型"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter1-sub7" class="sub-nav-link" data-title="政策指导"><span class="sub-nav-dot"></span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item-group">
+                <a href="#chapter2" class="nav-link main-link" data-title="Pre-REITs逻辑"><span class="nav-icon">02</span><span class="nav-text">Pre-REITs逻辑</span></a>
+                <ul class="sub-nav-list">
+                    <li><a href="#chapter2-sub1" class="sub-nav-link" data-title="什么是Pre-REITs基金"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter2-sub2" class="sub-nav-link" data-title="公司股权上市vs资产REITs上市"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter2-sub3" class="sub-nav-link" data-title="市场痛点与解决方案"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter2-sub4" class="sub-nav-link" data-title="接续产品比较"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter2-sub5" class="sub-nav-link" data-title="Pre-REITs衔接REITs案例：华安张江产业园"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter2-sub6" class="sub-nav-link" data-title="建信住房租赁基金持有型不动产ABS案例"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter2-sub7" class="sub-nav-link" data-title="部分已设立Pre-REITs基金案例统计"><span class="sub-nav-dot"></span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item-group">
+                <a href="#chapter3" class="nav-link main-link" data-title="工商业储能"><span class="nav-icon">03</span><span class="nav-text">工商业储能</span></a>
+                <ul class="sub-nav-list">
+                    <li><a href="#chapter3-sub1" class="sub-nav-link" data-title="中国能源结构快速转型"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter3-sub2" class="sub-nav-link" data-title="工商业储能行业分析"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter3-sub3" class="sub-nav-link" data-title="工商业储能市场分析"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter3-sub4" class="sub-nav-link" data-title="工商业储能政策支持"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter3-sub5" class="sub-nav-link" data-title="工商侧储能投资逻辑"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter3-sub6" class="sub-nav-link" data-title="智慧基建基金案例：核心条款"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter3-sub7" class="sub-nav-link" data-title="颀阔智能管理中的智慧能源"><span class="sub-nav-dot"></span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item-group">
+                <a href="#chapter4" class="nav-link main-link" data-title="停车场"><span class="nav-icon">04</span><span class="nav-text">停车场</span></a>
+                <ul class="sub-nav-list">
+                    <li><a href="#chapter4-sub1" class="sub-nav-link" data-title="停车场市场概况"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter4-sub2" class="sub-nav-link" data-title="停车场资产现状"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter4-sub3" class="sub-nav-link" data-title="政策导向和政府债务风险"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter4-sub4" class="sub-nav-link" data-title="Pre-REITs+ABS/REITs方案的优势"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter4-sub5" class="sub-nav-link" data-title="基金的功能"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter4-sub6" class="sub-nav-link" data-title="山东XX集团ABS发行规模预测"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter4-sub7" class="sub-nav-link" data-title="保利ABS成功发行案例"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter4-sub8" class="sub-nav-link" data-title="颀阔智能系统综合介绍"><span class="sub-nav-dot"></span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item-group">
+                <a href="#chapter5" class="nav-link main-link" data-title="公司简介"><span class="nav-icon">05</span><span class="nav-text">公司简介</span></a>
+                <ul class="sub-nav-list">
+                    <li><a href="#chapter5-sub1" class="sub-nav-link" data-title="集团业务板块"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter5-sub2" class="sub-nav-link" data-title="股东背景简介"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter5-sub3" class="sub-nav-link" data-title="颀阔智能介绍"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter5-sub4" class="sub-nav-link" data-title="集团专利注入，全方位支持体系业务资产运营升级"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter5-sub5" class="sub-nav-link" data-title="中国城市公共交通协会副会长单位"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter5-sub6" class="sub-nav-link" data-title="储备项目"><span class="sub-nav-dot"></span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item-group">
+                <a href="#chapter6" class="nav-link main-link" data-title="Q&A"><span class="nav-icon">06</span><span class="nav-text">Q&A</span></a>
+                <ul class="sub-nav-list">
+                    <li><a href="#chapter6-sub1" class="sub-nav-link" data-title="操作步骤 - 资金方"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter6-sub2" class="sub-nav-link" data-title="操作步骤 - 资产方"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter6-sub3" class="sub-nav-link" data-title="Part A: 资金方 (找钱)"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter6-sub4" class="sub-nav-link" data-title="Part B: 资产方 (找项目)"><span class="sub-nav-dot"></span></a></li>
+                    <li><a href="#chapter6-sub5" class="sub-nav-link" data-title="总结与回顾"><span class="sub-nav-dot"></span></a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sideNav = document.getElementById('side-nav');
+            const navToggle = document.getElementById('nav-toggle');
+            const navGroups = document.querySelectorAll('.nav-item-group');
+            
+            // Toggle Sidebar
+            navToggle.addEventListener('click', () => {
+                sideNav.classList.toggle('collapsed');
+            });
+
+            // Toggle Sub-menus (Accordion Style)
+            document.querySelectorAll('.nav-link.main-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const currentGroup = link.parentElement;
+                    const currentList = currentGroup.querySelector('.sub-nav-list');
+                    
+                    // 1. Collapse ALL other groups first
+                    navGroups.forEach(g => {
+                        if (g !== currentGroup && g.classList.contains('expanded')) {
+                            g.classList.remove('expanded');
+                            const list = g.querySelector('.sub-nav-list');
+                            if (list) list.style.overflow = 'hidden';
+                        }
+                    });
+
+                    // 2. Toggle current group
+                    if (currentGroup.classList.contains('expanded')) {
+                        // Collapsing current
+                        if(currentList) currentList.style.overflow = 'hidden';
+                        currentGroup.classList.remove('expanded');
+                    } else {
+                        // Expanding current
+                        currentGroup.classList.add('expanded');
+                        // Wait for transition to finish then set overflow visible for tooltips
+                        if(currentList) {
+                            setTimeout(() => {
+                                if(currentGroup.classList.contains('expanded')) {
+                                    currentList.style.overflow = 'visible';
+                                }
+                            }, 500); // Match transition duration
+                        }
+                    }
+                });
+            });
+
+
+            // Smooth Scroll and Active State for Main Sections and Sub Sections
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        if (id) {
+                            // 1. Highlight Sub-link if exists
+                            const subLink = document.querySelector(`.sub-nav-link[href="#${id}"]`);
+                            if (subLink) {
+                                document.querySelectorAll('.sub-nav-link').forEach(l => l.classList.remove('active'));
+                                subLink.classList.add('active');
+                                
+                                // Also expand the parent group
+                                const group = subLink.closest('.nav-item-group');
+                                if (group) {
+                                    // Collapse others if new group is expanding
+                                    if (!group.classList.contains('expanded')) {
+                                        navGroups.forEach(g => {
+                                            if (g !== group && g.classList.contains('expanded')) {
+                                                g.classList.remove('expanded');
+                                                const list = g.querySelector('.sub-nav-list');
+                                                if (list) list.style.overflow = 'hidden';
+                                            }
+                                        });
+                                        
+                                        group.classList.add('expanded');
+                                        const list = group.querySelector('.sub-nav-list');
+                                        if(list) {
+                                            setTimeout(() => {
+                                                if(group.classList.contains('expanded')) {
+                                                    list.style.overflow = 'visible';
+                                                }
+                                            }, 500);
+                                        }
+                                    }
+                                }
+                            }
+
+                            // 2. Highlight Main link
+                            // If it's a main chapter, highlight it
+                            // If it's a sub-section, find its parent chapter
+                            let activeId = id;
+                            if (id.includes('-sub')) {
+                                activeId = id.split('-sub')[0];
+                            }
+                            
+                            const mainLink = document.querySelector(`.nav-link[href="#${activeId}"]`);
+                            if (mainLink) {
+                                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                                mainLink.classList.add('active');
+                                
+                                // Auto expand group if main section is active
+                                const group = mainLink.parentElement;
+                                if (group && group.classList.contains('nav-item-group')) {
+                                     if (!group.classList.contains('expanded')) {
+                                         // Collapse others
+                                         navGroups.forEach(g => {
+                                            if (g !== group && g.classList.contains('expanded')) {
+                                                g.classList.remove('expanded');
+                                                const list = g.querySelector('.sub-nav-list');
+                                                if (list) list.style.overflow = 'hidden';
+                                            }
+                                         });
+
+                                         group.classList.add('expanded');
+                                         const list = group.querySelector('.sub-nav-list');
+                                         if(list) {
+                                            setTimeout(() => {
+                                                if(group.classList.contains('expanded')) {
+                                                    list.style.overflow = 'visible';
+                                                }
+                                            }, 500);
+                                         }
+                                     }
+                                }
+                            }
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections and sub-sections (slide-titles with IDs)
+            document.querySelectorAll('section, .hero').forEach(el => observer.observe(el));
+            
+            // We also need to observe the sub-elements we added IDs to
+            // Since we added IDs to divs, we need to select them.
+            // They are .slide-title[id] or h3[id]
+            document.querySelectorAll('[id*="-sub"]').forEach(el => {
+                observer.observe(el);
             });
         });
     </script>
